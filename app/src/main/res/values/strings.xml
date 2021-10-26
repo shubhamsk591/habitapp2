@@ -31,11 +31,16 @@
 
     <string name="ListHere">Add list of habit</string>
 
-    <string name="Habit_Details">Enter the details of habit to be added </string>
+    <string name="Habit_Details">Create Habit </string>
 
-    <string name="Titlename">Enter the title</string>
+    <string name="Name">Name</string>
 
-    <string name="Goal">Enter Goal/Purpose</string>
+    <string name="Question">Question</string>
+    <string name="Unit">Unit</string>
+    <string name="Target">Target</string>
+    <string name="Frequency">Frequency</string>
+    <string name="Reminder">Reminder</string>
+    <string name="Notes">Notes</string>
 
     <string name="Ok">OK</string>
 

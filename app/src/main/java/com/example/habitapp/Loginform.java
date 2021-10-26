@@ -32,7 +32,7 @@ public class Loginform extends AppCompatActivity {
         {
             @Override
             public void onClick (View v){
-                Intent myintent =new Intent(v.getContext(), MainActivity.class);
+                Intent myintent =new Intent(v.getContext(), Fragment1.class);
                 startActivity(myintent);
             }
         });

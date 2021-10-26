@@ -1,84 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:orientation="vertical"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_width="match_parent">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
+        android:hint="@string/Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/detail"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/Habit_Details"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_input"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_question"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
+        android:hint="@string/Question"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_input_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_unit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
+        android:hint="@string/Unit"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_input_question">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
-
-        android:layout_width="wrap_content"
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/titlename"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/text_input_unit">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_target"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Titlename"
-            android:layout_margin="5dp">
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:hint="@string/Target"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        </TextView>
-
-        <EditText
-            android:id="@+id/title"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="153dp"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_frequency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/add_habit"
-            android:autofillHints="Title to show"
-            android:inputType="text">
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
+            android:hint="@string/Frequency"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        </EditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="164dp"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_reminder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
+        android:hint="@string/Reminder"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear1" >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
-
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/goaltitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Goal"
-            android:layout_margin="5dp">
-
-        </TextView>
-
-        <EditText
-            android:id="@+id/goal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:hint="@string/Goal"
-            android:autofillHints="Goal"
-            android:inputType="text">
-
-        </EditText>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/cancel_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/linear2"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/text_input_reminder">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_notes"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/Cancel">
-
-    </Button>
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
+        android:hint="@string/Notes"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/ok_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:text="@string/Ok">
 
     </Button>
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Cancel">
 
+    </Button>
+    </LinearLayout>
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>

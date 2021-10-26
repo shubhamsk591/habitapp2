@@ -19,14 +19,18 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Habitform extends AppCompatActivity {
+
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.habitform);
+
+
         Button cancelbutton = (Button) findViewById(R.id.cancel_button);
         cancelbutton.setOnClickListener(new View.OnClickListener()
         {
@@ -36,34 +40,17 @@ public class Habitform extends AppCompatActivity {
                 startActivity(myintent);
             }
         });
+
+
         Button okbutton = (Button) findViewById(R.id.ok_button);
-        AlertDialog.Builder build = new AlertDialog.Builder(this);
+
 
         okbutton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick (View v){
-
-                build.setMessage(R.string.alertmessage).setTitle(R.string.alerttitle);
-                build.setMessage(R.string.questionforsureaddhabit).setCancelable(false)
-                        .setPositiveButton(R.string.Ok,new DialogInterface.OnClickListener(){
-                            public void onClick(DialogInterface dialog,int id){
-                                finish();
-
-                            }
-                        })
-                        .setNegativeButton(R.string.Cancel,new DialogInterface.OnClickListener(){
-                            public void onClick(DialogInterface dialog,int id){
-                                dialog.cancel();
-                                Toast.makeText(getApplicationContext(), R.string.AddhabitclickCancel, Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                AlertDialog alert = build.create();
-                alert.setTitle(R.string.alerttitle);
-                alert.show();
-            }
+                Intent myintent =new Intent(v.getContext(), MainActivity.class);
+                startActivity(myintent); }
         });
     }
-
-
 }
