@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -17,13 +18,18 @@ public class Loginform extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginform);
 
-        Button loginbutton = (Button) findViewById(R.id.loginfinal);
+        EditText username=findViewById(R.id.username_input);
+        EditText password=findViewById(R.id.password_input);
+
+        Button loginbutton = (Button) findViewById(R.id.Login_button);
         loginbutton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick (View v){
+                String msg="Username : "+username.getText().toString()+"\nPassword : "+password.getText().toString();
+                msg=msg+"\n"+"Welcome After Login";
                 Toast.makeText(Loginform.this,
-                        R.string.WelcomeLogin,
+                        msg,
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -32,7 +38,7 @@ public class Loginform extends AppCompatActivity {
         {
             @Override
             public void onClick (View v){
-                Intent myintent =new Intent(v.getContext(), Fragment1.class);
+                Intent myintent =new Intent(v.getContext(), MainActivity.class);
                 startActivity(myintent);
             }
         });

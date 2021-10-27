@@ -1,57 +1,42 @@
 <resources>
     <string name="app_name">Habitapp</string>
-    //added
+    //added for tabs
     <string name="Habit_tab">Habit</string>
-
     <string name="List_Tab">List</string>
-
     <string name="Achievement">Achievement</string>
-
+//HOME PAGE
     <string name="add_habit">To add habit</string>
-
     <string name="welcome_text">Welcome to habit and motivation app</string>
-
     <string name="motivation_text">Click for Motivation</string>
-
     <string name="motivation_Insight">No motivation available can we create this app </string>
-
     <string name="Login">Login</string>
-
+//Login page
     <string name="LoginDetails">Enter the username and password</string>
-
-    <string name="LoginId">Username</string>
-
+    <string name="Username">Username</string>
     <string name="LoginPassword">Password</string>
-
     <string name="Cancel">Cancel</string>
-
-    <string name="Register">New user register</string>
-
+    <string name="Register">Sign In</string>
     <string name="WelcomeLogin">Welcome after login</string>
 
     <string name="ListHere">Add list of habit</string>
-
+    //habit add form
     <string name="Habit_Details">Create Habit </string>
-
     <string name="Name">Name</string>
-
+    <string name="Name_of_habit">Name of habit</string>
     <string name="Question">Question</string>
+    <string name="ExQuestion">How much did you run ?</string>
     <string name="Unit">Unit</string>
+    <string name="ExUnit">meters</string>
     <string name="Target">Target</string>
+    <string name="ExTarget">400meters</string>
     <string name="Frequency">Frequency</string>
     <string name="Reminder">Reminder</string>
     <string name="Notes">Notes</string>
-
     <string name="Ok">OK</string>
-
     <string name="alertmessage">Alert message</string>
-
     <string name="alerttitle">Add Habit</string>
-
     <string name="questionforsureaddhabit">Do you want to add this habit</string>
-
     <string name="Addhabitclickok">You have choose OK for add Habit</string>
-
     <string name="AddhabitclickCancel">You have choose Cancel for add Habit</string>
     <string name="open">open</string>
     <string name="close">close</string>
