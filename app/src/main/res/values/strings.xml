@@ -7,7 +7,7 @@
 //HOME PAGE
     <string name="add_habit">To add habit</string>
     <string name="welcome_text">Welcome to habit and motivation app</string>
-    <string name="motivation_text">Click for Motivation</string>
+    <string name="motivation_text">Motivation</string>
     <string name="motivation_Insight">No motivation available can we create this app </string>
     <string name="Login">Login</string>
 //Login page

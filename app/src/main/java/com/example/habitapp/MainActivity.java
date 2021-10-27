@@ -76,7 +76,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(myintent);
             }
         });
-
+        Button motivationButton=findViewById(R.id.motivation_button);
+        motivationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myintent =new Intent(view.getContext(),MotivationInsight.class);
+                startActivity(myintent);
+            }
+        });
 
     }
 
