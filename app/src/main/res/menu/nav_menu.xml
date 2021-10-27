@@ -2,19 +2,24 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/Habitadd_item"
-        android:title="@string/Habit_tab" />
+        android:id="@+id/Home_item"
+        android:title="@string/Home"
+        android:icon="@drawable/ic_home_item_icon"/>
     <item
-        android:id="@+id/list_item"
-        android:title="@string/List_Tab"
+        android:id="@+id/Categories_item"
+        android:title="@string/Categories"
+        android:icon="@drawable/ic_category_item_icon"
         />
     <item
-        android:id="@+id/Achievement_item"
-        android:title="@string/Achievement" />
+        android:id="@+id/Setting_item"
+        android:title="@string/Setting"
+        android:icon="@drawable/ic_settings_item_icon"/>
     <item
-        android:id="@+id/Login_item"
-        android:title="@string/Login" />
+        android:id="@+id/Rating_item"
+        android:title="@string/Rating"
+        android:icon="@drawable/ic_rating_item_icon"/>
     <item
-        android:id="@+id/New_item"
-        android:title="@string/Register" />
+        android:id="@+id/ContactUs_item"
+        android:title="@string/ContactUs"
+        android:icon="@drawable/ic_contactus_item_icon"/>
 </menu>

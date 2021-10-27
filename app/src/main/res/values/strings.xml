@@ -43,4 +43,10 @@
     //Registration Form
     <string name="Rname">Name</string>
     <string name="ExRname">User1</string>
+    //menu
+    <string name="Home">Home</string>
+    <string name="Categories">Categories</string>
+    <string name="Setting">Setting</string>
+    <string name="ContactUs">Contact Us</string>
+    <string name="Rating">Rating</string>
 </resources>

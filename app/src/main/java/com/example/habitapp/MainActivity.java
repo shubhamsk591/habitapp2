@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -84,20 +85,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
         switch(item.getItemId()){
-            case R.id.Habitadd_item:
+            case R.id.Home_item:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
-            case R.id.list_item:
+            case R.id.Categories_item:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
-            case R.id.Achievement_item:
+            case R.id.Setting_item:
                 startActivity(new Intent(this, MainActivity.class));
 
                 break;
-            case R.id.Login_item:
-                startActivity(new Intent(this, Loginform.class));
-            case R.id.New_item:
-                startActivity(new Intent(this, Registernew.class));
+            case R.id.Rating_item:
+                Toast.makeText(this,R.string.Rating,Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.ContactUs_item:
+                Toast.makeText(this,R.string.ContactUs,Toast.LENGTH_SHORT).show();
                 break;
             default:
                 return false;
