@@ -6,20 +6,27 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/motivation_Insight"
-        android:layout_gravity="center_horizontal"
+        android:text="@string/motivation_text"
         />
-<androidx.viewpager.widget.ViewPager
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/motivation"
+    <Button
+        android:id="@+id/cl"
+        android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:text="@string/Ok">
 
-        android:layout_margin="5dp"
-        android:text="@string/motivation_Insight" />
-</androidx.viewpager.widget.ViewPager>
+    </Button>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/motivationi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/motivation_Insight"
+            android:padding="5dp" />
+    </ScrollView>
 
 </LinearLayout>
