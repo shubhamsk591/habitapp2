@@ -23,18 +23,22 @@
             </intent-filter>
         </activity>
         <activity android:name=".Habitform"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/Habit_Details">
 
         </activity>
         <activity android:name=".Loginform"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/Login">
 
         </activity>
         <activity android:name=".MotivationInsight"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/motivation_text">
 
         </activity>
-        <activity android:name=".Registernew">
+        <activity android:name=".Registernew"
+            android:label="@string/Register">
 
         </activity>
     </application>

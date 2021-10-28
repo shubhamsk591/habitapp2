@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Habitapp</string>
     //added for tabs
-    <string name="Habit_tab">Habit</string>
+    <string name="Habit_tab">Home</string>
     <string name="List_Tab">List</string>
     <string name="Achievement">Achievement</string>
 //HOME PAGE
-    <string name="add_habit">To add habit</string>
+    <string name="add_habit">Home</string>
     <string name="welcome_text">Welcome to habit and motivation app</string>
     <string name="motivation_text">Motivation</string>
-    <string name="motivation_Insight">No motivation available can we create this app </string>
+    <string name="motivation_Insight">Click next arrow to see motivation </string>
     <string name="Login">Login</string>
 //Login page
     <string name="LoginDetails">Enter the username and password</string>
@@ -49,4 +49,7 @@
     <string name="Setting">Setting</string>
     <string name="ContactUs">Contact Us</string>
     <string name="Rating">Rating</string>
+    //added motivation form
+    <string name="back">Back</string>
+    <string name="next">Next</string>
 </resources>
