@@ -41,6 +41,11 @@
             android:label="@string/Register">
 
         </activity>
+        <activity android:name=".Popup"
+            android:exported="true"
+            android:theme="@style/popupwindowtheme">
+
+        </activity>
     </application>
 
 </manifest>

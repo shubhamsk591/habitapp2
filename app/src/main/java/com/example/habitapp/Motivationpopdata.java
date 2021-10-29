@@ -14,10 +14,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Random;
-
-public class Fetchdataformotivation extends AsyncTask<Void,Void,Void> {
+public class Motivationpopdata extends AsyncTask<Void,Void,Void> {
     String data="";
-    String dataparsed="";
     String singleparsed="";
     int i;
     @Override
@@ -33,11 +31,12 @@ public class Fetchdataformotivation extends AsyncTask<Void,Void,Void> {
                 data=data + line;
             }
             JSONArray JSArray=new JSONArray(data);
-                JSONObject jsonObject= (JSONObject) JSArray.get(getvaluei());
-                Log.d("car","Text i  "+i);
-                singleparsed="Quotes:"+jsonObject.get("quote")+"\n"+
-                        "Author:"+jsonObject.get("author")+"\n";
-                dataparsed=dataparsed + singleparsed +"\n";
+            rand();
+            JSONObject jsonObject= (JSONObject) JSArray.get(geti());
+            Log.d("car","Text i  "+i);
+            singleparsed="Quotes:"+jsonObject.get("quote")+"\n"+
+                    "Author:"+jsonObject.get("author")+"\n";
+
         } catch (IOException | JSONException e) {
             e.printStackTrace();
 
@@ -45,20 +44,16 @@ public class Fetchdataformotivation extends AsyncTask<Void,Void,Void> {
         return null;
 
     }
-    void setvalue(int a){
-        i=a;
+    void rand(){
+        Random r=new Random();
+        i= r.nextInt(100);
     }
-    int getvaluei(){
+    int geti(){
         return i;
     }
-    String getData(int c) {
-        setvalue(c);
-        return dataparsed;
-    }
-
     @Override
     protected void onPostExecute(Void unused) {
-        MotivationInsight.data.setText(this.dataparsed);
+        Popup.data.setText(this.singleparsed);
     }
 
 }

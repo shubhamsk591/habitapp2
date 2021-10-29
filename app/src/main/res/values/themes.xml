@@ -26,4 +26,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <!-- style window popup-->
+    <style name="popupwindowtheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
 </resources>
