@@ -26,12 +26,11 @@
     <string name="Question">Question</string>
     <string name="ExQuestion">How much did you run ?</string>
     <string name="Unit">Unit</string>
-    <string name="ExUnit">meters</string>
+    <string name="ExUnit">meters(Optional)</string>
     <string name="Target">Target</string>
     <string name="ExTarget">400meters</string>
-    <string name="Frequency">Frequency</string>
     <string name="Reminder">Reminder</string>
-    <string name="Notes">Notes</string>
+    <string name="Notes">Notes(Optional)</string>
     <string name="Ok">OK</string>
     <string name="alertmessage">Alert message</string>
     <string name="alerttitle">Add Habit</string>
@@ -40,6 +39,10 @@
     <string name="AddhabitclickCancel">You have choose Cancel for add Habit</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string-array name="Reminderoption">
+        <item>Off</item>
+        <item>On</item>
+    </string-array>
     //Registration Form
     <string name="Rname">Name</string>
     <string name="ExRname">User1</string>

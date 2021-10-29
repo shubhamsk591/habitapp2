@@ -44,6 +44,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/question_input"
             android:hint="@string/ExQuestion"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,66 +64,58 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/ExUnit"/>
+            android:hint="@string/ExUnit"
+            android:id="@+id/input_unit"/>
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/text_input_unit">
+        android:weightSum="1"
+        app:layout_constraintTop_toBottomOf="@id/text_input_unit"
+        android:baselineAligned="false">
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_target"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:hint="@string/Target"
+            android:layout_weight="0.5"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="153dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/ExTarget"/>
+                android:hint="@string/ExTarget"
+                android:id="@+id/input_target"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_input_frequency"
-            android:layout_width="wrap_content"
+            android:id="@+id/text_input_reminder"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
             android:layout_marginTop="16dp"
-            android:layout_marginStart="32dp"
-            android:hint="@string/Frequency"
+            android:layout_weight="0.5"
+            android:hint="@string/Reminder"
             app:layout_constraintEnd_toEndOf="parent"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear1" >
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="16dp"
-                android:layout_height="wrap_content" />
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/reminder_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_reminder"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="32dp"
-        android:hint="@string/Reminder"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear1" >
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linear2"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/text_input_reminder">
+        app:layout_constraintTop_toBottomOf="@id/linear1">
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_notes"
         android:layout_width="match_parent"
@@ -134,7 +127,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:id="@+id/notes_input"/>
     </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/ok_button"
