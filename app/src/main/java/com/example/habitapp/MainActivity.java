@@ -69,16 +69,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         pages.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mtablayout));
-
-        FloatingActionButton addhabit =  findViewById(R.id.floatingActionButton);
-        addhabit.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick (View v){
-                Intent myintent =new Intent(v.getContext(),Habitform.class);
-                startActivity(myintent);
-            }
-        });
         Button motivationButton=findViewById(R.id.motivation_button);
         motivationButton.setOnClickListener(new View.OnClickListener() {
             @Override

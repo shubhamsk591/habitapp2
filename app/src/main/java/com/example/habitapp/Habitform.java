@@ -1,23 +1,23 @@
 package com.example.habitapp;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Habitform extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private EditText editname,edunit,edquestion,ednotes,edtarget;
+    private Spinner reminder;
     private boolean completed=false;
-    private String remindertxt,nametxt,questiontxt,notestxt,unittxt,targettxt;
+    private String remindertxt,nametxt="",questiontxt="",notestxt="",unittxt="",targettxt="";
     private boolean rm=false;
 
     @Override
@@ -32,16 +32,11 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
         edtarget = findViewById(R.id.input_target);
         ednotes = findViewById(R.id.notes_input);
         edunit = findViewById(R.id.input_unit);
-        Spinner reminder = findViewById(R.id.reminder_input);
+        reminder = findViewById(R.id.reminder_input);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(Habitform.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Reminderoption));
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         reminder.setAdapter(arrayAdapter);
-        reminder.setOnItemSelectedListener(this);
-        nametxt = editname.getText().toString();
-        questiontxt = edquestion.getText().toString();
-        unittxt = edunit.getText().toString();
-        targettxt = edtarget.getText().toString();
-        notestxt = ednotes.getText().toString();
+
 
         Databasehelper dmhelper = new Databasehelper(this);
 
@@ -56,44 +51,74 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
 
 
         Button okbutton = (Button) findViewById(R.id.ok_button);
-
-
         okbutton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                if (nametxt != null && questiontxt != null && targettxt != null && remindertxt != null) {
+                Log.d("you","are");
+                fetchvalueinserted();
+                Log.d("you","are value inserted ");
+                if (nametxt.length() != 0 && questiontxt.length() != 0 && targettxt.length() != 0) {
+                    Log.d("you","are after test");
                     AddData(nametxt, questiontxt, unittxt, targettxt, rm, notestxt, completed);
+                    Log.d("you","are add data after");
                     editname.setText("");
                     edquestion.setText("");
                     edunit.setText("");
                     edtarget.setText("");
                     ednotes.setText("");
+
+                }
+                else
+                { editname.setText("");
+                    edquestion.setText("");
+                    edunit.setText("");
+                    edtarget.setText("");
+                    ednotes.setText("");
+                    ToastMessage("Fill form details");
                 }
             }
+
             public void AddData(String nametxt, String questiontxt, String unittxt, String targettxt,boolean rm, String notestxt,boolean completed) {
                 boolean insert=dmhelper.addDatabaseitem(nametxt,questiontxt,unittxt,targettxt,rm,notestxt,completed);
-                if(insert==true){
+                Log.d("you","are checking insert");
+                if(insert){
+                    ToastMessage("Details filled inserted ");
                     Log.d("string ","gyg: "+insert);
                 }
                 else{
+                    ToastMessage("Details filled not inserted ");
                     Log.d("string","gy"+insert);
                 }}
         });
     }
+    public void fetchvalueinserted(){
+        nametxt = editname.getText().toString();
+        Log.d("name in form ","hsj "+nametxt);
+        questiontxt = edquestion.getText().toString();
+        Log.d("name in form ","hsj "+questiontxt);
+        unittxt = edunit.getText().toString();
+        Log.d("name in form ","hsj "+unittxt);
+        targettxt = edtarget.getText().toString();
+        Log.d("name in form ","hsj "+targettxt);
+        notestxt = ednotes.getText().toString();
+        Log.d("name in form ","hsj "+notestxt);
+        reminder.setOnItemSelectedListener(this);
+        Log.d("name in form ","hsj "+rm);
+    }
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             remindertxt = adapterView.getItemAtPosition(i).toString();
-            if(remindertxt == "Off");
-            {rm=false; }
-            if(remindertxt=="On"){
-                rm=true;
+            if(remindertxt.equals("On")){
+            rm=true;
         }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+    private void ToastMessage(String fill_form_details) {
+        Toast.makeText(this,fill_form_details,Toast.LENGTH_SHORT).show();
     }
 }
 /* private ListView list;

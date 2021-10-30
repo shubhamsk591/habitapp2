@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,13 +11,28 @@
 
         android:layout_margin="5dp"
         android:text="@string/ListHere" />
+    <LinearLayout
+        android:id="@+id/linearlist1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/addlist">
 
     <ListView
         android:id="@+id/listView_item"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:drawSelectorOnTop="false">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     </ListView>
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_alignEnd="@id/linearlist1"
+        android:layout_alignBottom="@id/linearlist1"
+        android:contentDescription="@string/add_habit"
+       android:baselineAlignBottom="true"
+        android:src="@android:drawable/ic_input_add" />
 
-</LinearLayout>
+</RelativeLayout>

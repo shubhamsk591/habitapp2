@@ -1,50 +1,56 @@
 package com.example.habitapp;
 
-import android.app.LauncherActivity;
+import android.content.Intent;
 import android.database.Cursor;
-import android.icu.text.LocaleDisplayNames;
 import android.os.Bundle;
-import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.example.habitapp.R;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class Fragment2 extends Fragment {
-    public ArrayList<String> arrayList;
-    public EditText editText;
     Databasehelper databasehelper;
     public ListView listview;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.habitlist, container, false);
-        listview=v.findViewById(R.id.listView_item);
-        databasehelper=new Databasehelper(v.getContext());
+        FloatingActionButton addhabit = v.findViewById(R.id.floatingActionButton);
+        addhabit.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick (View v){
+                Intent myintent =new Intent(v.getContext(),Habitform.class);
+                startActivity(myintent);
+            }
+        });
+        listview = v.findViewById(R.id.listView_item);
+        databasehelper = new Databasehelper(getActivity());
         populatelist();
+        Log.d("When","hsjs ");
         return v;
 
 
     }
-
     private void populatelist() {
-        Cursor cdata=databasehelper.getdata();
-        arrayList=new ArrayList<>();
-        while (cdata.moveToNext()){
+        Cursor cdata = databasehelper.getdata();
+        ArrayList<String> arrayList = new ArrayList<>();
+        while (cdata.moveToNext()) {
             arrayList.add(cdata.getString(1));
+            Log.d("huahh", "gugiu " + cdata.getString(1));
         }
-        ListAdapter adapter=new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,arrayList);
+        ListAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, arrayList);
         listview.setAdapter(adapter);
     }
 }

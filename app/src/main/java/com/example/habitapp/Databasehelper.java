@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -26,9 +27,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String  createtable="CREATE TABLE "+TABLE_Name+" ( "+Col1+" INTEGER Primary key AutoIncrement, "+Col2+" String Not null , " +
-                Col3+" Text not null, "+Col4+"TEXT , "+Col5+" String not null, "+Col6+" boolean, "+Col7+" Text , "+Col8+" boolean)";
-
+        String  createtable="CREATE TABLE "+TABLE_Name+" (Id INTEGER Primary key AutoIncrement ,"+Col2+" TEXT Not null ," +Col3+ " Text not null ,"+Col4+" TEXT ,"+Col5+" Text not null ,"+Col6+" Boolean,"+Col7+" Text ,"+Col8+" boolean );";
         sqLiteDatabase.execSQL(createtable);
     }
 
@@ -41,23 +40,22 @@ public class Databasehelper extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(Col2,name);
+        Log.d("Name ","hahn: "+name);
         contentValues .put(Col3,question);
         contentValues.put(Col4,unit);
         contentValues.put(Col5,target);
         contentValues.put(Col6,remainder);
         contentValues.put(Col7,notes);
         contentValues.put(Col8,completed);
+        Log.d("you","are inserting value");
+
         long result=db.insert(TABLE_Name,null,contentValues);
-        if(result==-1){
-            return  false;
-        }
-        else{
-            return true;
-        }
+        Log.d("you","are returning boolean");
+        return result != -1;
     }
     public Cursor getdata(){
         SQLiteDatabase db=this.getWritableDatabase();
-        Cursor cr=db.rawQuery("SELECT * FROM "+TABLE_Name,null);
-        return cr;
+        Log.d("you","are getdata cursor");
+        return db.rawQuery("SELECT * FROM "+TABLE_Name,null);
     }
 }
