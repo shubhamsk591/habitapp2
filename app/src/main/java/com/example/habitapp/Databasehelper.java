@@ -64,29 +64,11 @@ public class Databasehelper extends SQLiteOpenHelper {
         return bdi.rawQuery(str1,null);
 
     }
-    public void getvalueup(int i,String name,String question,String unit,String target,int rm,String notes,int com){
-        String st2="SELECT "+Col2+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
+    public Cursor getvalueup(int id){
+        String st2="SELECT "+Col2+" From "+TABLE_Name+" Where "+Col1+" = "+id+";";
         SQLiteDatabase bdi2=this.getWritableDatabase();
         Cursor s2=bdi2.rawQuery(st2,null);
-        name=s2.getString(1);
-        st2="SELECT "+Col3+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
-        s2= bdi2.rawQuery(st2,null);
-        question=s2.getString(2);
-        st2="SELECT "+Col4+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
-        s2= bdi2.rawQuery(st2,null);
-        unit=s2.getString(3);
-        st2="SELECT "+Col5+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
-        s2= bdi2.rawQuery(st2,null);
-        target=s2.getString(4);
-        st2="SELECT "+Col6+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
-        s2= bdi2.rawQuery(st2,null);
-        rm=s2.getInt(5);
-        st2="SELECT "+Col7+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
-        s2= bdi2.rawQuery(st2,null);
-        notes=s2.getString(6);
-        st2="SELECT "+Col8+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
-        s2= bdi2.rawQuery(st2,null);
-        com=s2.getInt(7);
+        return s2;
 
 
     }
