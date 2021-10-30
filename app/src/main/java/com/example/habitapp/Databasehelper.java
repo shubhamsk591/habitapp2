@@ -27,7 +27,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String  createtable="CREATE TABLE "+TABLE_Name+" (Id INTEGER Primary key AutoIncrement ,"+Col2+" TEXT Not null ," +Col3+ " Text not null ,"+Col4+" TEXT ,"+Col5+" Text not null ,"+Col6+" Boolean,"+Col7+" Text ,"+Col8+" boolean );";
+        String  createtable="CREATE TABLE "+TABLE_Name+" (Id INTEGER Primary key AutoIncrement ,"+Col2+" TEXT Not null ," +Col3+ " Text not null ,"+Col4+" TEXT ,"+Col5+" Text not null ,"+Col6+" Integer ,"+Col7+" Text ,"+Col8+" Integer);";
         sqLiteDatabase.execSQL(createtable);
     }
 
@@ -36,7 +36,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " +TABLE_Name);
     onCreate(sqLiteDatabase);
     }
-    public boolean addDatabaseitem(String name,String question,String unit,String target,boolean remainder,String notes,boolean completed){
+    public boolean addDatabaseitem(String name,String question,String unit,String target,int remainder,String notes,int completed){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(Col2,name);
@@ -57,5 +57,56 @@ public class Databasehelper extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         Log.d("you","are getdata cursor");
         return db.rawQuery("SELECT * FROM "+TABLE_Name,null);
+    }
+    public Cursor getItemID(String na){
+        SQLiteDatabase bdi=this.getWritableDatabase();
+        String str1="SELECT "+Col1+" From "+TABLE_Name+" Where "+Col2+" = '"+na+"'";
+        return bdi.rawQuery(str1,null);
+
+    }
+    public void getvalueup(int i,String name,String question,String unit,String target,int rm,String notes,int com){
+        String st2="SELECT "+Col2+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
+        SQLiteDatabase bdi2=this.getWritableDatabase();
+        Cursor s2=bdi2.rawQuery(st2,null);
+        name=s2.getString(1);
+        st2="SELECT "+Col3+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
+        s2= bdi2.rawQuery(st2,null);
+        question=s2.getString(2);
+        st2="SELECT "+Col4+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
+        s2= bdi2.rawQuery(st2,null);
+        unit=s2.getString(3);
+        st2="SELECT "+Col5+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
+        s2= bdi2.rawQuery(st2,null);
+        target=s2.getString(4);
+        st2="SELECT "+Col6+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
+        s2= bdi2.rawQuery(st2,null);
+        rm=s2.getInt(5);
+        st2="SELECT "+Col7+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
+        s2= bdi2.rawQuery(st2,null);
+        notes=s2.getString(6);
+        st2="SELECT "+Col8+" From "+TABLE_Name+" Where "+Col1+" = "+i+";";
+        s2= bdi2.rawQuery(st2,null);
+        com=s2.getInt(7);
+
+
+    }
+    public void update(int i,String oldname,String name,String question,String unit,String target,int rm,String notes,int com){
+        SQLiteDatabase db2=this.getWritableDatabase();
+        String query="Update "+TABLE_Name+" SET "+Col2+" = "+name+ ","+
+                Col3+" = "+question+" , "+" , "+
+                Col4+" = "+unit+" , "+
+                Col5+" = "+target+" , "+
+                Col6+" = "+rm+" , "+
+                Col7+" = "+notes+" , "+
+                Col8+" = "+com+" , "+
+                " Where "+Col1+" = "+i +" And "+Col2+" = "+oldname +" ;";
+        db2.execSQL(query);
+    }
+    public void delete(int i,String name){
+        SQLiteDatabase db2=this.getWritableDatabase();
+        String query="Delete from "+TABLE_Name+
+                " Where "+Col1+" = "+i +" And "+Col2+" = "+name +" ;";
+        db2.execSQL(query);
+
     }
 }

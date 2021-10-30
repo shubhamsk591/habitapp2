@@ -16,9 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Habitform extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private EditText editname,edunit,edquestion,ednotes,edtarget;
     private Spinner reminder;
-    private boolean completed=false;
+    private int completed=0;
     private String remindertxt,nametxt="",questiontxt="",notestxt="",unittxt="",targettxt="";
-    private boolean rm=false;
+    private int rm=0;
 
     @Override
 
@@ -78,16 +78,15 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                 }
             }
 
-            public void AddData(String nametxt, String questiontxt, String unittxt, String targettxt,boolean rm, String notestxt,boolean completed) {
+            public void AddData(String nametxt, String questiontxt, String unittxt, String targettxt,int rm, String notestxt,int completed) {
                 boolean insert=dmhelper.addDatabaseitem(nametxt,questiontxt,unittxt,targettxt,rm,notestxt,completed);
                 Log.d("you","are checking insert");
                 if(insert){
                     ToastMessage("Details filled inserted ");
-                    Log.d("string ","gyg: "+insert);
+
                 }
                 else{
                     ToastMessage("Details filled not inserted ");
-                    Log.d("string","gy"+insert);
                 }}
         });
     }
@@ -109,7 +108,7 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             remindertxt = adapterView.getItemAtPosition(i).toString();
             if(remindertxt.equals("On")){
-            rm=true;
+            rm=1;
         }
     }
 

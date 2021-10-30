@@ -46,6 +46,10 @@
             android:theme="@style/popupwindowtheme">
 
         </activity>
+        <activity android:name=".Updatahabit"
+            android:exported="true">
+
+        </activity>
     </application>
 
 </manifest>

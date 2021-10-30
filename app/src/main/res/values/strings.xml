@@ -55,4 +55,7 @@
     //added motivation form
     <string name="back">Back</string>
     <string name="next">Next</string>
+    //add updatehabit
+    <string name="Save">Save</string>
+    <string name="Delete">Delete</string>
 </resources>

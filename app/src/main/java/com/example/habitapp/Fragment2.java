@@ -7,9 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +41,28 @@ public class Fragment2 extends Fragment {
         databasehelper = new Databasehelper(getActivity());
         populatelist();
         Log.d("When","hsjs ");
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String name=adapterView.getItemAtPosition(i).toString();
+                Cursor crdata=databasehelper.getItemID(name);
+                int itemid=-1;
+                while (crdata.moveToNext()){
+                    itemid=crdata.getInt(0);
+                    if(itemid > -1){
+                        Intent update=new Intent(getActivity(),Updatahabit.class);
+                        update.putExtra("Id",itemid);
+                        update.putExtra("Name",name);
+
+                        startActivity(update);
+                    }
+                    else
+                    {
+                        Toastmessage("wrong id");
+                    }
+                }
+            }
+        });
         return v;
 
 
@@ -52,6 +76,9 @@ public class Fragment2 extends Fragment {
         }
         ListAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, arrayList);
         listview.setAdapter(adapter);
+    }
+    private void Toastmessage(String st){
+        Toast.makeText(getActivity(),st,Toast.LENGTH_SHORT);
     }
 }
 /*
