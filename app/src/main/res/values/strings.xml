@@ -58,4 +58,5 @@
     //add updatehabit
     <string name="Save">Save</string>
     <string name="Delete">Delete</string>
+    <string name="Completed">Completed</string>
 </resources>

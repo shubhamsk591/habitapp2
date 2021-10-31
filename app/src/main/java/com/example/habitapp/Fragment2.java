@@ -45,15 +45,16 @@ public class Fragment2 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name=adapterView.getItemAtPosition(i).toString();
+                Log.d("hj","onclick "+name);
                 Cursor crdata=databasehelper.getItemID(name);
                 int itemid=-1;
                 while (crdata.moveToNext()){
                     itemid=crdata.getInt(0);
                     if(itemid > -1){
-                        Intent update=new Intent(getActivity(),Updatahabit.class);
+                        Intent update=new Intent(getActivity(),HabitDetails.class);
                         update.putExtra("Id",itemid);
                         update.putExtra("Name",name);
-
+                        Log.d("uhiua","hdaui "+itemid);
                         startActivity(update);
                     }
                     else

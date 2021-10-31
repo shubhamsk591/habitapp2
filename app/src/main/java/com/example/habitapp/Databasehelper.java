@@ -9,6 +9,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class Databasehelper extends SQLiteOpenHelper {
     private static final  String TAG="Databasehelper";
     private static final String TABLE_Name="Person1";
@@ -27,7 +29,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String  createtable="CREATE TABLE "+TABLE_Name+" (Id INTEGER Primary key AutoIncrement ,"+Col2+" TEXT Not null ," +Col3+ " Text not null ,"+Col4+" TEXT ,"+Col5+" Text not null ,"+Col6+" Integer ,"+Col7+" Text ,"+Col8+" Integer);";
+        String  createtable="CREATE TABLE "+TABLE_Name+" (Id INTEGER Primary key AutoIncrement ,"+Col2+" TEXT NOT NULL ," +Col3+ " Text not null ,"+Col4+" TEXT ,"+Col5+" Text not null ,"+Col6+" Integer ,"+Col7+" Text ,"+Col8+" Integer);";
         sqLiteDatabase.execSQL(createtable);
     }
 
@@ -64,13 +66,27 @@ public class Databasehelper extends SQLiteOpenHelper {
         return bdi.rawQuery(str1,null);
 
     }
-    public Cursor getvalueup(int id){
-        String st2="SELECT "+Col2+" From "+TABLE_Name+" Where "+Col1+" = "+id+";";
-        SQLiteDatabase bdi2=this.getWritableDatabase();
+    public Habits getvalueup(int i){
+        SQLiteDatabase bdi2=this.getReadableDatabase();
+        String st2="SELECT * FROM "+TABLE_Name+" WHERE "+Col1+" = "+i+";";
+        Log.d("hjckj ","uchiu"+st2);
         Cursor s2=bdi2.rawQuery(st2,null);
-        return s2;
+        Log.d("hjckj ","uchiu"+s2);
+        Habits hab=new Habits();
+        while (s2.moveToNext()){
+            i=s2.getInt(0);
+            String name=s2.getString(1);
+            Log.d("hjckj ","uchiu"+name);
+            String question=s2.getString(2);
+            String unit=s2.getString(3);
+            String target=s2.getString(4);
+            int rm=s2.getInt(5);
+            String notes=s2.getString(6);
+            int com=s2.getInt(7);
 
-
+            hab=new Habits(i,name,question,unit,target,rm,notes,com);
+            }
+        return hab;
     }
     public void update(int i,String oldname,String name,String question,String unit,String target,int rm,String notes,int com){
         SQLiteDatabase db2=this.getWritableDatabase();

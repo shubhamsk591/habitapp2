@@ -1,8 +1,6 @@
 package com.example.habitapp;
 
-import android.content.ContentUris;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -90,13 +88,12 @@ public class Updatahabit extends AppCompatActivity implements AdapterView.OnItem
         Intent nowupdate=getIntent();
         id=nowupdate.getIntExtra("Id",-1);//default
         old=nowupdate.getStringExtra("name");
-        Cursor a=dmhelper.getvalueup(id);
-        while (a.moveToNext()){
-        ueditname.setText(a.getString(1));
-        uedquestion.setText(a.getString(2));
-        uedunit.setText(a.getString(3));
-        uedtarget.setText(a.getString(4));
-        uednotes.setText(a.getString(6));}
+        Habits har1 =dmhelper.getvalueup(id);
+        ueditname.setText(unametxt);
+        uedquestion.setText(uquestiontxt);
+        uedunit.setText(uunittxt);
+        uedtarget.setText(utargettxt);
+        uednotes.setText(unotestxt);
         if(urm == 1){
             ureminder.setSelection(1);}
         else {
