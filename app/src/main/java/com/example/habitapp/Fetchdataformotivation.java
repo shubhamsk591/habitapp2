@@ -17,7 +17,6 @@ import java.util.Random;
 
 public class Fetchdataformotivation extends AsyncTask<Void,Void,Void> {
     String data="";
-    String dataparsed="";
     String singleparsed="";
     int i;
     @Override
@@ -37,7 +36,6 @@ public class Fetchdataformotivation extends AsyncTask<Void,Void,Void> {
                 Log.d("car","Text i  "+i);
                 singleparsed="Quotes:"+jsonObject.get("quote")+"\n"+
                         "Author:"+jsonObject.get("author")+"\n";
-                dataparsed=dataparsed + singleparsed +"\n";
         } catch (IOException | JSONException e) {
             e.printStackTrace();
 
@@ -51,14 +49,11 @@ public class Fetchdataformotivation extends AsyncTask<Void,Void,Void> {
     int getvaluei(){
         return i;
     }
-    String getData(int c) {
-        setvalue(c);
-        return dataparsed;
-    }
+
 
     @Override
     protected void onPostExecute(Void unused) {
-        MotivationInsight.data.setText(this.dataparsed);
+        MotivationInsight.data.setText(this.singleparsed);
     }
 
 }

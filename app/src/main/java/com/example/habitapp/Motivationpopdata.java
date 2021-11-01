@@ -31,7 +31,6 @@ public class Motivationpopdata extends AsyncTask<Void,Void,Void> {
                 data=data + line;
             }
             JSONArray JSArray=new JSONArray(data);
-            rand();
             JSONObject jsonObject= (JSONObject) JSArray.get(geti());
             Log.d("car","Text i  "+i);
             singleparsed="Quotes:"+jsonObject.get("quote")+"\n"+
@@ -44,13 +43,14 @@ public class Motivationpopdata extends AsyncTask<Void,Void,Void> {
         return null;
 
     }
-    void rand(){
-        Random r=new Random();
-        i= r.nextInt(100);
-    }
+
     int geti(){
         return i;
     }
+    void setvalue(int a){
+        i=a;
+    }
+
     @Override
     protected void onPostExecute(Void unused) {
         Popup.data.setText(this.singleparsed);
