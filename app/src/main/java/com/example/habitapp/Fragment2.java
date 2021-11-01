@@ -64,6 +64,27 @@ public class Fragment2 extends Fragment {
                 }
             }
         });
+        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String name=adapterView.getItemAtPosition(i).toString();
+                Cursor crdata1=databasehelper.getItemID(name);
+                int itemid=-1;
+                while (crdata1.moveToNext()){
+                    itemid=crdata1.getInt(0);
+                    if(itemid >-1){
+                    Intent updel=new Intent(getActivity(),Updatahabit.class);
+                    updel.putExtra("Id",itemid);
+                    updel.putExtra("Name",name);
+                    startActivity(updel);}
+                else
+                    {
+                    Toastmessage("wrong id");
+                    }
+                }
+                return false;
+            }
+        });
         return v;
 
 

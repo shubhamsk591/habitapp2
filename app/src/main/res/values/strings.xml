@@ -43,9 +43,10 @@
         <item>Off</item>
         <item>On</item>
     </string-array>
+
     //Registration Form
     <string name="Rname">Name</string>
-    <string name="ExRname">User1</string>
+    <string name="ExRname">User</string>
     //menu
     <string name="Home">Home</string>
     <string name="Categories">Categories</string>
@@ -59,4 +60,8 @@
     <string name="Save">Save</string>
     <string name="Delete">Delete</string>
     <string name="Completed">Completed</string>
+    <string-array name="Completeoption">
+        <item>No</item>
+        <item>Yes</item>
+    </string-array>
 </resources>

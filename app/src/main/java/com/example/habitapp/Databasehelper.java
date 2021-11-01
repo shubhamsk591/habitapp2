@@ -9,8 +9,6 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
-
 public class Databasehelper extends SQLiteOpenHelper {
     private static final  String TAG="Databasehelper";
     private static final String TABLE_Name="Person1";
@@ -49,10 +47,10 @@ public class Databasehelper extends SQLiteOpenHelper {
         contentValues.put(Col6,remainder);
         contentValues.put(Col7,notes);
         contentValues.put(Col8,completed);
-        Log.d("you","are inserting value");
+        Log.d(TAG,"are inserting value");
 
         long result=db.insert(TABLE_Name,null,contentValues);
-        Log.d("you","are returning boolean");
+        Log.d(TAG,"are returning boolean");
         return result != -1;
     }
     public Cursor getdata(){
@@ -86,25 +84,57 @@ public class Databasehelper extends SQLiteOpenHelper {
 
             hab=new Habits(i,name,question,unit,target,rm,notes,com);
             }
+        s2.close();
         return hab;
     }
     public void update(int i,String oldname,String name,String question,String unit,String target,int rm,String notes,int com){
         SQLiteDatabase db2=this.getWritableDatabase();
-        String query="Update "+TABLE_Name+" SET "+Col2+" = "+name+ ","+
-                Col3+" = "+question+" , "+" , "+
-                Col4+" = "+unit+" , "+
-                Col5+" = "+target+" , "+
+        String query="Update "+TABLE_Name+" SET "+Col2+" = '"+name+ "',"+
+                Col3+" = '"+question+"' , "+
+                Col4+" = '"+unit+"' , "+
+                Col5+" = '"+target+"' , "+
                 Col6+" = "+rm+" , "+
-                Col7+" = "+notes+" , "+
-                Col8+" = "+com+" , "+
-                " Where "+Col1+" = "+i +" And "+Col2+" = "+oldname +" ;";
+                Col7+" = '"+notes+"' , "+
+                Col8+" = "+com+"  "+
+                " Where "+Col1+" = "+i +" And "+Col2+" = ' "+oldname +" '";
+        Log.d(TAG,"bh "+query);
         db2.execSQL(query);
+        Log.d(TAG,"bh "+query);
     }
     public void delete(int i,String name){
         SQLiteDatabase db2=this.getWritableDatabase();
         String query="Delete from "+TABLE_Name+
-                " Where "+Col1+" = "+i +" And "+Col2+" = "+name +" ;";
+                " Where "+Col1+" = "+i +" And "+Col2+" = '"+name +" '";
         db2.execSQL(query);
+        db2.close();
 
+    }
+    public boolean updatedata(int i,String oldname,String name,String question,String unit,String target,int rm,String notes,int com){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(Col2,name);
+        Log.d("Name ","hahn: "+name);
+        contentValues .put(Col3,question);
+        contentValues.put(Col4,unit);
+        contentValues.put(Col5,target);
+        contentValues.put(Col6,rm);
+        contentValues.put(Col7,notes);
+        contentValues.put(Col8,com);
+        Log.d(TAG,"are update value");
+        String where =Col1 +" = '" +i+"' And "+Col2+" = ?";
+        String args[]={oldname};
+        long result=db.update(TABLE_Name,contentValues,where,args);
+        db.close();
+        Log.d(TAG,"are returning boolean");
+        return result != -1;
+    }
+    public boolean deletedata(int i,String name){
+        SQLiteDatabase db=this.getWritableDatabase();
+        String where =Col1 +" = '" +i+"' And "+Col2+" = ?";
+        String args[]={name};
+        long result=db.delete(TABLE_Name,where,args);
+        db.close();
+        Log.d(TAG,"are returning boolean");
+        return result != -1;
     }
 }
