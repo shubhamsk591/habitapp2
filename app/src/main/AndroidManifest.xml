@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.habitapp">
-    //use internet
+    <!--use internet-->
 <uses-permission android:name="android.permission.INTERNET">
 
 </uses-permission>
@@ -47,10 +47,12 @@
 
         </activity>
         <activity android:name=".Updatahabit"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/ModifyHabits">
 
         </activity>
         <activity android:name=".HabitDetails"
+            android:label="@string/Habit_Details"
             android:exported="true">
 
         </activity>
