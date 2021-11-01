@@ -57,6 +57,7 @@
     <string name="back">Back</string>
     <string name="next">Next</string>
     //add updatehabit
+    <string name="Habit_Detailv">Habit Details</string>
     <string name="ModifyHabits">Modify Habit</string>
     <string name="Save">Save</string>
     <string name="Delete">Delete</string>

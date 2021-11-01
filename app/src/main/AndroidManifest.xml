@@ -52,7 +52,7 @@
 
         </activity>
         <activity android:name=".HabitDetails"
-            android:label="@string/Habit_Details"
+            android:label="@string/Habit_Detailv"
             android:exported="true">
 
         </activity>
