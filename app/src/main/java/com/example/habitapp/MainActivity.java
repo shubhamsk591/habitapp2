@@ -1,5 +1,14 @@
 package com.example.habitapp;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,14 +17,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -26,15 +28,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TabLayout mtablayout;
     TabItem firstitem,seconditem,thirditem;
     FragmentPagerAdapter adapter;
-    int count=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(count==0){
-        openPopUpWindow();
-        count=1;
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(sharedPreferences.getBoolean("IS_FIRST_TIME", true)) {
+            //show your dialog here
+            openPopUpWindow();
+            //change the value of your sharedPreferences
+            sharedPreferences.edit().putBoolean("IS_FIRST_TIME", false).apply();
         }
+
         drawerLayout=(DrawerLayout) findViewById(R.id.drawer);
         pages=findViewById(R.id.view_pager);
         mtablayout=findViewById(R.id.tabLayout);

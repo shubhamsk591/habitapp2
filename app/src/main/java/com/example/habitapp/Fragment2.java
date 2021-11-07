@@ -28,6 +28,9 @@ public class Fragment2 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.habitlist, container, false);
+        listview = v.findViewById(R.id.listView_item);
+        databasehelper = new Databasehelper(getActivity());
+        populatelist();
         FloatingActionButton addhabit = v.findViewById(R.id.floatingActionButton);
         addhabit.setOnClickListener(new View.OnClickListener()
         {
@@ -37,9 +40,7 @@ public class Fragment2 extends Fragment {
                 startActivity(myintent);
             }
         });
-        listview = v.findViewById(R.id.listView_item);
-        databasehelper = new Databasehelper(getActivity());
-        populatelist();
+
         Log.d("When","hsjs ");
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
