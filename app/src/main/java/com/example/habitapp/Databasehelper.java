@@ -59,9 +59,12 @@ public class Databasehelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM "+TABLE_Name,null);
     }
     public Cursor getItemID(String na){
+        Log.d(TAG,"bj"+na);
         SQLiteDatabase bdi=this.getWritableDatabase();
         String str1="SELECT "+Col1+" From "+TABLE_Name+" Where "+Col2+" = '"+na+"'";
+        Log.d(TAG,"gasgh");
         return bdi.rawQuery(str1,null);
+
 
     }
     public Habits getvalueup(int i){
@@ -87,28 +90,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         s2.close();
         return hab;
     }
-    public void update(int i,String oldname,String name,String question,String unit,String target,int rm,String notes,int com){
-        SQLiteDatabase db2=this.getWritableDatabase();
-        String query="Update "+TABLE_Name+" SET "+Col2+" = '"+name+ "',"+
-                Col3+" = '"+question+"' , "+
-                Col4+" = '"+unit+"' , "+
-                Col5+" = '"+target+"' , "+
-                Col6+" = "+rm+" , "+
-                Col7+" = '"+notes+"' , "+
-                Col8+" = "+com+"  "+
-                " Where "+Col1+" = "+i +" And "+Col2+" = ' "+oldname +" '";
-        Log.d(TAG,"bh "+query);
-        db2.execSQL(query);
-        Log.d(TAG,"bh "+query);
-    }
-    public void delete(int i,String name){
-        SQLiteDatabase db2=this.getWritableDatabase();
-        String query="Delete from "+TABLE_Name+
-                " Where "+Col1+" = "+i +" And "+Col2+" = '"+name +" '";
-        db2.execSQL(query);
-        db2.close();
 
-    }
     public boolean updatedata(int i,String oldname,String name,String question,String unit,String target,int rm,String notes,int com){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
@@ -137,4 +119,37 @@ public class Databasehelper extends SQLiteOpenHelper {
         Log.d(TAG,"are returning boolean");
         return result != -1;
     }
+    public boolean setCompleted(int i,String name,int com){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(Col8,com);
+        String where =Col1 +" = '" +i+"' And "+Col2+" = ?";
+        String args[]={name};
+        long result=db.update(TABLE_Name,contentValues,where,args);
+        return result!=-1;
+
+    }
 }
+/*public void update(int i,String oldname,String name,String question,String unit,String target,int rm,String notes,int com){
+        SQLiteDatabase db2=this.getWritableDatabase();
+        String query="Update "+TABLE_Name+" SET "+Col2+" = '"+name+ "',"+
+                Col3+" = '"+question+"' , "+
+                Col4+" = '"+unit+"' , "+
+                Col5+" = '"+target+"' , "+
+                Col6+" = "+rm+" , "+
+                Col7+" = '"+notes+"' , "+
+                Col8+" = "+com+"  "+
+                " Where "+Col1+" = "+i +" And "+Col2+" = ' "+oldname +" '";
+        Log.d(TAG,"bh "+query);
+        db2.execSQL(query);
+        Log.d(TAG,"bh "+query);
+    }
+    public void delete(int i,String name){
+        SQLiteDatabase db2=this.getWritableDatabase();
+        String query="Delete from "+TABLE_Name+
+                " Where "+Col1+" = "+i +" And "+Col2+" = '"+name +" '";
+        db2.execSQL(query);
+        db2.close();
+
+    }
+    */

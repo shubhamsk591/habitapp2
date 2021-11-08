@@ -53,6 +53,8 @@ public class Updatahabit extends AppCompatActivity implements AdapterView.OnItem
                     boolean up=dmhelper.updatedata(id,old,unametxt,uquestiontxt,uunittxt,utargettxt,urm,unotestxt,completed);
                     if(up){
                         ToastMessage("Sucessfully updated ");
+                        Intent ab=new Intent(Updatahabit.this,MainActivity.class);
+                        startActivity(ab);
                     }
                     else{
                         ToastMessage("Failed to update");
@@ -72,12 +74,14 @@ public class Updatahabit extends AppCompatActivity implements AdapterView.OnItem
                 boolean del=dmhelper.deletedata(id,old);
                 if(del){
                     ToastMessage("Sucessfully deleted ");
+                    Intent ab=new Intent(Updatahabit.this,MainActivity.class);
+                    startActivity(ab);
                 }
                 else{
                     ToastMessage("Failed to delete ");
+                    Intent ab=new Intent(Updatahabit.this,MainActivity.class);
+                    startActivity(ab);
                 }
-                Intent ab=new Intent(Updatahabit.this,MainActivity.class);
-                startActivity(ab);
             }
             });
 

@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,7 +21,7 @@ import java.util.ArrayList;
 
 public class Fragment2 extends Fragment {
     Databasehelper databasehelper;
-    public ListView listview;
+    ListView listview;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,12 +39,10 @@ public class Fragment2 extends Fragment {
             }
         });
 
-        Log.d("When","hsjs ");
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name=adapterView.getItemAtPosition(i).toString();
-                Log.d("hj","onclick "+name);
                 Cursor crdata=databasehelper.getItemID(name);
                 int itemid=-1;
                 while (crdata.moveToNext()){
@@ -69,20 +65,7 @@ public class Fragment2 extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name=adapterView.getItemAtPosition(i).toString();
-                Cursor crdata1=databasehelper.getItemID(name);
-                int itemid=-1;
-                while (crdata1.moveToNext()){
-                    itemid=crdata1.getInt(0);
-                    if(itemid >-1){
-                    Intent updel=new Intent(getActivity(),Updatahabit.class);
-                    updel.putExtra("Id",itemid);
-                    updel.putExtra("Name",name);
-                    startActivity(updel);}
-                else
-                    {
-                    Toastmessage("wrong id");
-                    }
-                }
+                updatepage(name);
                 return false;
             }
         });
@@ -90,17 +73,35 @@ public class Fragment2 extends Fragment {
 
 
     }
+
+    public void updatepage(String name) {
+        Cursor crdata1=databasehelper.getItemID(name);
+        int itemid;
+        while (crdata1.moveToNext()){
+            itemid=crdata1.getInt(0);
+            if(itemid >-1){
+                Intent updel=new Intent(getActivity(),Updatahabit.class);
+                updel.putExtra("Id",itemid);
+                updel.putExtra("Name",name);
+                startActivity(updel);}
+            else
+            {
+                Toastmessage("wrong name ");
+            }
+        }
+    }
+
     private void populatelist() {
         Cursor cdata = databasehelper.getdata();
         ArrayList<String> arrayList = new ArrayList<>();
         while (cdata.moveToNext()) {
             arrayList.add(cdata.getString(1));
         }
-        ListAdapter adapter = new Listitemadapter(getActivity(),arrayList,1);
+        Listitemadapter adapter = new Listitemadapter(getContext(),arrayList);
         listview.setAdapter(adapter);
     }
     private void Toastmessage(String st){
-        Toast.makeText(getActivity(),st,Toast.LENGTH_SHORT);
+        Toast.makeText(getActivity(),st,Toast.LENGTH_SHORT).show();
     }
 }
 /*
