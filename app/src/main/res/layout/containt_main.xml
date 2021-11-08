@@ -12,13 +12,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </androidx.appcompat.widget.Toolbar>
-    <Button
+    <ImageButton
         android:id="@+id/motivation_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/motivation_text"
+        android:src="@drawable/ic_baseline_stars_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/MotivationButton" />
 
 
 

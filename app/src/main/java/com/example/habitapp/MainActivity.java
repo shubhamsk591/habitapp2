@@ -4,9 +4,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,30 +34,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        if(sharedPreferences.getBoolean("IS_FIRST_TIME", true)) {
-            //show your dialog here
-            openPopUpWindow();
-            //change the value of your sharedPreferences
-            sharedPreferences.edit().putBoolean("IS_FIRST_TIME", false).apply();
-        }
-
-        drawerLayout=(DrawerLayout) findViewById(R.id.drawer);
-        pages=findViewById(R.id.view_pager);
-        mtablayout=findViewById(R.id.tabLayout);
-        firstitem=findViewById(R.id.firsttab);
-        seconditem=findViewById(R.id.secondtab);
-        thirditem=findViewById(R.id.thirdtab);
-        NavigationView navigationView=(NavigationView) findViewById(R.id.navigationView);
-        navigationView.setNavigationItemSelectedListener(this);
-        Toolbar toolbar=(Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.setDrawerIndicatorEnabled(true);
-        toggle.syncState();
+        //run for firstime when app installed
+        ontime();
+        //get the id
+        getUIid();
+        //for navigation drawer
+        drawerfunction();
         adapter =new PageAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,mtablayout.getTabCount());
         pages.setAdapter(adapter);
         mtablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -76,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         pages.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mtablayout));
-        Button motivationButton=findViewById(R.id.motivation_button);
+        ImageButton motivationButton=findViewById(R.id.motivation_button);
         motivationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +68,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+    }
+
+    private void drawerfunction() {
+        Toolbar toolbar=(Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.setDrawerIndicatorEnabled(true);
+        toggle.syncState();
+    }
+
+    private void getUIid() {
+        drawerLayout=(DrawerLayout) findViewById(R.id.drawer);
+        pages=findViewById(R.id.view_pager);
+        mtablayout=findViewById(R.id.tabLayout);
+        firstitem=findViewById(R.id.firsttab);
+        seconditem=findViewById(R.id.secondtab);
+        thirditem=findViewById(R.id.thirdtab);
+        NavigationView navigationView=(NavigationView) findViewById(R.id.navigationView);
+        navigationView.setNavigationItemSelectedListener(this);
+
+    }
+
+    private void ontime() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(sharedPreferences.getBoolean("IS_FIRST_TIME", true)) {
+            //show your dialog here
+            openPopUpWindow();
+            //change the value of your sharedPreferences
+            sharedPreferences.edit().putBoolean("IS_FIRST_TIME", false).apply();
+        }
     }
 
     private void openPopUpWindow() {
@@ -96,7 +110,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
+        Log.d("bjhitem","njsniv "+item.getItemId());
         switch(item.getItemId()){
+
             case R.id.Home_item:
                 openPopUpWindow();
                 break;
@@ -105,13 +121,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.Setting_item:
                 startActivity(new Intent(this, MainActivity.class));
-
                 break;
             case R.id.Rating_item:
                 Toast.makeText(this,R.string.Rating,Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ContactUs_item:
                 Toast.makeText(this,R.string.ContactUs,Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.login_item:
+                startActivity(new Intent(this,Loginform.class));
+                break;
+            case R.id.register_item:
+                startActivity(new Intent(this,Registernew.class));
                 break;
             default:
                 return false;

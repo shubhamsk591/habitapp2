@@ -95,9 +95,8 @@ public class Fragment2 extends Fragment {
         ArrayList<String> arrayList = new ArrayList<>();
         while (cdata.moveToNext()) {
             arrayList.add(cdata.getString(1));
-            Log.d("huahh", "gugiu " + cdata.getString(1));
         }
-        ListAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, arrayList);
+        ListAdapter adapter = new Listitemadapter(getActivity(),arrayList,1);
         listview.setAdapter(adapter);
     }
     private void Toastmessage(String st){

@@ -4,6 +4,7 @@ public class Habits {
     int id;
     String Name,Question,Target,Unit,Notes;
     int reminder,completed;
+    static boolean modify=false;
     public Habits(){
 
     }
@@ -83,7 +84,9 @@ public class Habits {
 
         this.completed = completed;
     }
+    public static void setModify(boolean modify){Habits.modify = modify;}
 
+    public static boolean getModify(){ return Habits.modify;}
 
 
 }

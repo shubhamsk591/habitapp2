@@ -1,15 +1,27 @@
 <resources>
     <string name="app_name">Habitapp</string>
     //added for tabs
+//content xml
     <string name="Habit_tab">Home</string>
     <string name="List_Tab">List</string>
     <string name="Achievement">Achievement</string>
+    <string name="MotivationButton">Motivation Button</string>
+
+    //menu
+    <string name="Home">Home</string>
+    <string name="Categories">Categories</string>
+    <string name="Setting">Setting</string>
+    <string name="ContactUs">Contact Us</string>
+    <string name="Rating">Rating</string>
+    <string name="Login">Login</string>
+    <string name="SignIn">SignIn</string>
+
 //HOME PAGE
     <string name="add_habit">Home</string>
     <string name="welcome_text">Welcome to habit and motivation app</string>
     <string name="motivation_text">Motivation</string>
     <string name="motivation_Insight">Click next arrow to see motivation </string>
-    <string name="Login">Login</string>
+
 //Login page
     <string name="LoginDetails">Enter the username and password</string>
     <string name="Username">Username</string>
@@ -47,12 +59,7 @@
     //Registration Form
     <string name="Rname">Name</string>
     <string name="ExRname">User</string>
-    //menu
-    <string name="Home">Home</string>
-    <string name="Categories">Categories</string>
-    <string name="Setting">Setting</string>
-    <string name="ContactUs">Contact Us</string>
-    <string name="Rating">Rating</string>
+
     //added motivation form
     <string name="back">Back</string>
     <string name="next">Next</string>
