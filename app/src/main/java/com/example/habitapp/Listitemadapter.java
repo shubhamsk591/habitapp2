@@ -46,7 +46,7 @@ public class Listitemadapter extends ArrayAdapter<String> {
                     String na= list.get(position);
                     Databasehelper databasehelper=new Databasehelper(getContext());
                     Cursor crdata1 = databasehelper.getItemID(na);
-                    int itemid = -1;
+                    int itemid;
                     while (crdata1.moveToNext()) {
                         itemid = crdata1.getInt(0);
                         if (itemid > -1) {
@@ -66,7 +66,7 @@ public class Listitemadapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View view) {
                     String name=list.get(position);
-                    int itemid=-1;
+                    int itemid;
                     Databasehelper databasehelper=new Databasehelper(getContext());
                     Cursor cursor=databasehelper.getItemID(name);
                     Log.d("bsj","djs");

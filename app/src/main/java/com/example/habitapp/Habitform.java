@@ -33,6 +33,7 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
         ednotes = findViewById(R.id.notes_input);
         edunit = findViewById(R.id.input_unit);
         reminder = findViewById(R.id.reminder_input);
+
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(Habitform.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Reminderoption));
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         reminder.setAdapter(arrayAdapter);
