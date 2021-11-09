@@ -99,6 +99,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //change the value of your sharedPreferences
             sharedPreferences.edit().putBoolean("IS_FIRST_TIME", false).apply();
         }
+        if(sharedPreferences.getBoolean("IS_START",true)){
+            openPopUpWindow();
+            sharedPreferences.edit().putBoolean("IS_START",false).apply();
+        }
     }
 
     private void openPopUpWindow() {

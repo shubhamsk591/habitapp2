@@ -20,17 +20,30 @@ public class Loginform extends AppCompatActivity {
 
         EditText username=findViewById(R.id.username_input);
         EditText password=findViewById(R.id.password_input);
-
+        DatabaseLoginhelper Dblogin=new DatabaseLoginhelper(this);
         Button loginbutton = (Button) findViewById(R.id.Login_button);
         loginbutton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick (View v){
-                String msg="Username : "+username.getText().toString()+"\nPassword : "+password.getText().toString();
-                msg=msg+"\n"+"Welcome After Login";
-                Toast.makeText(Loginform.this,
-                        msg,
-                        Toast.LENGTH_SHORT).show();
+                String user=username.getText().toString();
+                String pass=password.getText().toString();
+                if(user.isEmpty() ||pass.isEmpty()){
+                    Toastmessage("Please complete fill details");
+                }
+                else if(Dblogin.checkusername(user)){
+                    if(Dblogin.checkuserandpass(user,pass)){
+                        Toastmessage("Welcome to login");
+                        Intent in=new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(in);
+                    }
+                    else{
+                        Toastmessage("wrong password");
+                    }
+                }
+                else{
+                    Toastmessage("Username do not exist");
+                }
             }
         });
         Button cancelbutton = (Button) findViewById(R.id.cancel_button);
@@ -51,6 +64,10 @@ public class Loginform extends AppCompatActivity {
                 startActivity(myintent);
             }
         });
+    }
+
+    private void Toastmessage(String st) {
+        Toast.makeText(this, st, Toast.LENGTH_SHORT).show();
     }
 
 
