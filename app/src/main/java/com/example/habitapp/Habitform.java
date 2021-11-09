@@ -13,11 +13,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Habitform extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private EditText editname,edunit,edquestion,ednotes,edtarget;
     private Spinner reminder;
     private int completed=0;
-    private String remindertxt,nametxt="",questiontxt="",notestxt="",unittxt="",targettxt="";
+    private String remindertxt,nametxt="",questiontxt="",notestxt="",unittxt="",targettxt="",date="";
     private int rm=0;
 
     @Override
@@ -60,7 +64,8 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                 Log.d("you","are value inserted ");
                 if (nametxt.length() != 0 && questiontxt.length() != 0 && targettxt.length() != 0) {
                     Log.d("you","are after test");
-                    AddData(nametxt, questiontxt, unittxt, targettxt, rm, notestxt, completed);
+                    String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                    AddData(nametxt, questiontxt, unittxt, targettxt, rm, notestxt, completed,date);
                     Log.d("you","are add data after");
                     editname.setText("");
                     edquestion.setText("");
@@ -79,8 +84,8 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                 }
             }
 
-            public void AddData(String nametxt, String questiontxt, String unittxt, String targettxt,int rm, String notestxt,int completed) {
-                boolean insert=dmhelper.addDatabaseitem(nametxt,questiontxt,unittxt,targettxt,rm,notestxt,completed);
+            public void AddData(String nametxt, String questiontxt, String unittxt, String targettxt,int rm, String notestxt,int completed,String data) {
+                boolean insert=dmhelper.addDatabaseitem(nametxt,questiontxt,unittxt,targettxt,rm,notestxt,completed,date);
                 Log.d("you","are checking insert");
                 if(insert){
                     ToastMessage("Details filled inserted ");

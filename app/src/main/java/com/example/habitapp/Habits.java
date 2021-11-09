@@ -2,7 +2,7 @@ package com.example.habitapp;
 
 public class Habits {
     int id;
-    String Name,Question,Target,Unit,Notes;
+    String Name,Question,Target,Unit,Notes,Date;
     int reminder,completed;
     static boolean modify=false;
     public Habits(){
@@ -40,6 +40,10 @@ public class Habits {
         this.completed = completed;
     }
 
+    public void setDate(String date){
+        this.Date=date;
+    }
+
     public int getId() {
         return id;
     }
@@ -71,7 +75,9 @@ public class Habits {
     public int getCompleted() {
         return completed;
     }
-
+    public String getDate(){
+        return Date;
+    }
     public Habits(int id, String name, String question,  String unit,String target,int reminder,String notes, int completed) {
         this.id = id;
         Name = name;

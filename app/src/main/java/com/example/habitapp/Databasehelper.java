@@ -1,3 +1,5 @@
+
+
 package com.example.habitapp;
 
 import android.content.ContentValues;
@@ -21,13 +23,15 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String Col7="Notes";
     private static final String Col8="Completed";
 
+    private static final String Col9="BDate";
+
     public Databasehelper(@Nullable Context context) {
         super(context,TABLE_Name,null,1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String  createtable="CREATE TABLE "+TABLE_Name+" (Id INTEGER Primary key AutoIncrement ,"+Col2+" TEXT NOT NULL ," +Col3+ " Text not null ,"+Col4+" TEXT ,"+Col5+" Text not null ,"+Col6+" Integer ,"+Col7+" Text ,"+Col8+" Integer);";
+        String  createtable="CREATE TABLE "+TABLE_Name+" (Id INTEGER Primary key AutoIncrement ,"+Col2+" TEXT NOT NULL ," +Col3+ " Text not null ,"+Col4+" TEXT ,"+Col5+" Text not null ,"+Col6+" Integer ,"+Col7+" Text ,"+Col8+" Integer , "+Col9+" Text);";
         sqLiteDatabase.execSQL(createtable);
     }
 
@@ -36,7 +40,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " +TABLE_Name);
     onCreate(sqLiteDatabase);
     }
-    public boolean addDatabaseitem(String name,String question,String unit,String target,int remainder,String notes,int completed){
+    public boolean addDatabaseitem(String name,String question,String unit,String target,int remainder,String notes,int completed,String date){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(Col2,name);
@@ -48,7 +52,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         contentValues.put(Col7,notes);
         contentValues.put(Col8,completed);
         Log.d(TAG,"are inserting value");
-
+        contentValues.put(Col9,date);
         long result=db.insert(TABLE_Name,null,contentValues);
         Log.d(TAG,"are returning boolean");
         return result != -1;
