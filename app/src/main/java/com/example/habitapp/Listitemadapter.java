@@ -39,7 +39,7 @@ public class Listitemadapter extends ArrayAdapter<String> {
             name.setText(na);
             ImageButton up=convertView.findViewById(R.id.updatebuttonlist);
             ImageButton del=convertView.findViewById(R.id.deletebuttonlist);
-
+            ImageButton detail=convertView.findViewById(R.id.detailbuttonlist);
             up.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -85,6 +85,31 @@ public class Listitemadapter extends ArrayAdapter<String> {
                             }
                         }}
         });
+            detail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String name=list.get(position);
+                    int itemid=-1;
+                    Log.d("Tag","Reached");
+                    Databasehelper databasehelper=new Databasehelper(getContext());
+                    Cursor cursor=databasehelper.getItemID(name);
+                    while (cursor.moveToNext()){
+                        itemid=cursor.getInt(0);
+                        if(itemid > -1){
+                            Log.d("Tag","Reached");
+                            Intent update=new Intent(getContext(),HabitDetails.class);
+                            update.putExtra("Id",itemid);
+                            update.putExtra("Name",name);
+                            Log.d("uhiua","hdaui "+itemid);
+                            context.startActivity(update);
+                        }
+                        else
+                        {
+                            Toastmessage("wrong id");
+                        }
+                    }
+                }
+            });
         }
         return convertView;
 }

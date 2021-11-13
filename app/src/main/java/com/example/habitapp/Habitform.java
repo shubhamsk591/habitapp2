@@ -49,7 +49,7 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
         cancelbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myintent = new Intent(v.getContext(), MainActivity.class);
+                Intent myintent = new Intent(v.getContext(), Home.class);
                 startActivity(myintent);
             }
         });
@@ -72,7 +72,7 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                     edunit.setText("");
                     edtarget.setText("");
                     ednotes.setText("");
-                    Intent in=new Intent(getApplicationContext(),MainActivity.class);
+                    Intent in=new Intent(getApplicationContext(),Home.class);
                     startActivity(in);
 
                 }

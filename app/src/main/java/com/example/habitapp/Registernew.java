@@ -24,7 +24,7 @@ public class Registernew extends AppCompatActivity {
         {
             @Override
             public void onClick (View v){
-                Intent myintent =new Intent(v.getContext(), MainActivity.class);
+                Intent myintent =new Intent(v.getContext(), Home.class);
                 startActivity(myintent);
             }
         });
@@ -43,7 +43,7 @@ public class Registernew extends AppCompatActivity {
                         Toastmessage("Username exist"); }
                     else{
                         if(Dblogin.addDatabaselogin(user,pass)){
-                            Toastmessage("Sucessfully inserted");
+                            Toastmessage("Sucessfully inserted ");
                             Intent in=new Intent(getApplicationContext(),Loginform.class);
                             startActivity(in);
                         }

@@ -33,8 +33,8 @@ public class Loginform extends AppCompatActivity {
                 }
                 else if(Dblogin.checkusername(user)){
                     if(Dblogin.checkuserandpass(user,pass)){
-                        Toastmessage("Welcome to login");
-                        Intent in=new Intent(getApplicationContext(),MainActivity.class);
+                        Toastmessage("Welcome to login :"+user);
+                        Intent in=new Intent(getApplicationContext(),Home.class);
                         startActivity(in);
                     }
                     else{
@@ -43,6 +43,8 @@ public class Loginform extends AppCompatActivity {
                 }
                 else{
                     Toastmessage("Username do not exist");
+                    Intent in=new Intent(getApplicationContext(),Registernew.class);
+                    startActivity(in);
                 }
             }
         });
@@ -51,7 +53,7 @@ public class Loginform extends AppCompatActivity {
         {
             @Override
             public void onClick (View v){
-                Intent myintent =new Intent(v.getContext(), MainActivity.class);
+                Intent myintent =new Intent(v.getContext(), Home.class);
                 startActivity(myintent);
             }
         });
