@@ -72,6 +72,8 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                     edunit.setText("");
                     edtarget.setText("");
                     ednotes.setText("");
+                    Intent in=new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(in);
 
                 }
                 else
