@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Habitapp</string>
+    <string name="app_name">Habit Tracker app</string>
     //added for tabs
 //content xml
     <string name="Habit_tab">Home</string>
