@@ -13,18 +13,21 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </androidx.appcompat.widget.Toolbar>
+
+
     <ImageButton
         android:id="@+id/motivation_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@color/purple_500"
+        android:contentDescription="@string/MotivationButton"
         android:src="@drawable/ic_baseline_stars_24"
+        app:circularflow_viewCenter="@id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="5dp"
-        android:contentDescription="@string/MotivationButton" />
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
