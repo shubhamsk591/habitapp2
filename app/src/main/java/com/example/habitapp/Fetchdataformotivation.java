@@ -14,7 +14,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Fetchdataformotivation extends AsyncTask<Void,Void,Void> {
+public class Fetchdataformotivation extends AsyncTask<
+        Void,Void,Void> {
     String data="";
     String singleparsed="";
     int i;

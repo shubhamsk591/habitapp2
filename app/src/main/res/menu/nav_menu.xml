@@ -6,11 +6,6 @@
         android:title="@string/Home"
         android:icon="@drawable/ic_home_item_icon"/>
     <item
-        android:id="@+id/Categories_item"
-        android:title="@string/Categories"
-        android:icon="@drawable/ic_category_item_icon"
-        />
-    <item
         android:id="@+id/Setting_item"
         android:title="@string/Setting"
         android:icon="@drawable/ic_settings_item_icon"/>
@@ -27,6 +22,8 @@
         android:title="@string/Login"
         android:icon="@drawable/ic_baseline_login_24"/>
     <item
+
+
         android:id="@+id/register_item"
         android:title="@string/SignIn"
         android:icon="@drawable/ic_baseline_person_add_24"/>

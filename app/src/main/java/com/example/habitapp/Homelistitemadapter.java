@@ -49,6 +49,7 @@ public class Homelistitemadapter extends ArrayAdapter<String> {
                         com=1;
                         updatedcom(na,com);
                         compoundButton.setChecked(true);
+
                     }
                     else{
                         com=0;

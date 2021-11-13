@@ -1,9 +1,7 @@
 package com.example.habitapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +21,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     ViewPager pages;
@@ -37,7 +38,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         getUIid();
         //for navigation drawer
         drawerfunction();
-        //gert
+        //check date
+        timeupdate();
         adapter =new PageAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,mtablayout.getTabCount());
         pages.setAdapter(adapter);
         mtablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -68,11 +70,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     }
 
-    private void getLogin() {
-        Intent in= new Intent(this,Loginform.class);
-        startActivity(in);
-    }
-
     private void drawerfunction() {
         Toolbar toolbar=(Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -94,23 +91,23 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     }
 
-    private void ontime() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        if(sharedPreferences.getBoolean("IS_FIRST_TIME", true)) {
-            //show your dialog here
-            openPopUpWindow();
-            getLogin();
-            //change the value of your sharedPreferences
-            sharedPreferences.edit().putBoolean("IS_FIRST_TIME", false).apply();
-        }
-    }
+
 
     private void openPopUpWindow() {
         Intent popupw=new Intent(getApplicationContext(),Popup.class);
         startActivity(popupw);
     }
-
-
+    private void timeupdate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ");
+        String currentDateandTime = sdf.format(new Date());
+        Log.d("Time", "hjh " + currentDateandTime);
+        DataBaseDateUpdate dataBaseDateUpdate = new DataBaseDateUpdate(getApplicationContext());
+        String stdate = dataBaseDateUpdate.getdate();
+        if (stdate != currentDateandTime) {
+            openPopUpWindow();
+            dataBaseDateUpdate.updatedate(currentDateandTime);
+        }
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -120,11 +117,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.Home_item:
                 openPopUpWindow();
                 break;
-            case R.id.Categories_item:
-                startActivity(new Intent(this, MainActivity.class));
-                break;
             case R.id.Setting_item:
-                startActivity(new Intent(this, MainActivity.class));
+                Toast.makeText(getApplicationContext(),"Welcome to change theme",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.Rating_item:
                 Toast.makeText(this,R.string.Rating,Toast.LENGTH_SHORT).show();

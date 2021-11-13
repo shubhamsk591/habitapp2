@@ -90,7 +90,7 @@ public class Databasehelper extends SQLiteOpenHelper {
             int com=s2.getInt(7);
 
             hab=new Habits(i,name,question,unit,target,rm,notes,com);
-            }
+        }
         s2.close();
         return hab;
     }

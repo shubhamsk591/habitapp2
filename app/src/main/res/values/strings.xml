@@ -14,7 +14,7 @@
     <string name="ContactUs">Contact Us</string>
     <string name="Rating">Rating</string>
     <string name="Login">Login</string>
-    <string name="SignIn">SignIn</string>
+    <string name="SignIn">SignUp</string>
 
 //HOME PAGE
     <string name="add_habit">Home</string>
