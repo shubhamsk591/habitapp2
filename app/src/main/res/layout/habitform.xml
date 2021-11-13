@@ -24,8 +24,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/name_input"
-            android:hint="@string/Name_of_habit"/>
+            android:id="@+id/name_input" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -44,8 +43,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/question_input"
-            android:hint="@string/ExQuestion"/>
+            android:id="@+id/question_input" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -64,7 +62,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/ExUnit"
             android:id="@+id/input_unit"/>
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
@@ -88,7 +85,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="153dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/ExTarget"
                 android:id="@+id/input_target"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
