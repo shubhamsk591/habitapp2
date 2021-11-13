@@ -61,21 +61,24 @@
                 android:id="@+id/rLogin_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/Login">
+                android:text="@string/Login"
+                android:layout_margin="10dp">
 
             </Button>
             <Button
                 android:id="@+id/rcancel_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/Cancel">
+                android:text="@string/Cancel"
+                android:layout_margin="10dp">
 
             </Button>
             <Button
                 android:id="@+id/rregister_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/Ok">
+                android:text="@string/Ok"
+                android:layout_margin="10dp">
 
             </Button>
         </LinearLayout>

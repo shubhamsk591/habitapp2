@@ -134,6 +134,7 @@
         android:id="@+id/ok_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:text="@string/Ok">
 
     </Button>
@@ -141,7 +142,9 @@
         android:id="@+id/cancel_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Cancel">
+        android:text="@string/Cancel"
+        android:layout_margin="10dp"
+        >
 
     </Button>
     </LinearLayout>
