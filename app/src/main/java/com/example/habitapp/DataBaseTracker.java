@@ -59,11 +59,10 @@ public class DataBaseTracker extends SQLiteOpenHelper {
         Log.d("hjckj ","uchiu"+st2);
         Cursor s2=bdi2.rawQuery(st2,null);
         Log.d("hjckj ","uchiu"+s2);
-        s2.close();
         return s2;
     }
 
-    public int getComplete(int id, String name, String Date)
+    /*public int getComplete(int id, String name, String Date)
     {
         SQLiteDatabase bdi2=this.getReadableDatabase();
         String st2="SELECT * FROM "+TABLE_Name+" WHERE "+Col3+" = '"+name+"' And "+Col4+" = '"+name+"' ;";
@@ -75,5 +74,5 @@ public class DataBaseTracker extends SQLiteOpenHelper {
         }
         return com;
 
-    }
+    }*/
 }

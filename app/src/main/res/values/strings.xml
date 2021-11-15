@@ -73,4 +73,6 @@
         <item>No</item>
         <item>Yes</item>
     </string-array>
+    //Achievement
+    <string name="Search">Search</string>
 </resources>
