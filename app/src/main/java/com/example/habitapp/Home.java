@@ -1,6 +1,7 @@
 package com.example.habitapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -22,7 +23,9 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
@@ -98,16 +101,33 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         startActivity(popupw);
     }
     private void timeupdate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ", Locale.US);
         String currentDateandTime = sdf.format(new Date());
         Log.d("Time", "hjh " + currentDateandTime);
         DataBaseDateUpdate dataBaseDateUpdate = new DataBaseDateUpdate(getApplicationContext());
         String stdate = dataBaseDateUpdate.getdate();
-        if (stdate != currentDateandTime) {
+        if (!stdate.equals(currentDateandTime)) {
             openPopUpWindow();
             dataBaseDateUpdate.updatedate(currentDateandTime);
+            addnewentryfor(currentDateandTime);
+
+            //change listview of home 0
         }
     }
+
+    private void addnewentryfor(String time) {
+        DataBaseTracker dataBaseTracker=new DataBaseTracker(getApplicationContext());
+        Databasehelper databasehelper=new Databasehelper(getApplicationContext());
+        Cursor cdata = databasehelper.getdata();
+        while (cdata.moveToNext()) {
+            int id=cdata.getInt(0);
+            String name=cdata.getString(1);
+            dataBaseTracker.addDatabaseitemtracker(id,name,time,0);
+
+
+        }
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);

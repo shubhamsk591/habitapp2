@@ -9,14 +9,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Homelistitemadapter extends ArrayAdapter<String> {
     ArrayList<String> list;
@@ -42,18 +43,40 @@ public class Homelistitemadapter extends ArrayAdapter<String> {
             name.setText(na);
             checkBox = convertView.findViewById(R.id.checkboxhomelist);
             setvaluecom(na);
+
+
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     if(compoundButton.isChecked()){
                         com=1;
                         updatedcom(na,com);
+                        DataBaseTracker dataBaseTracker=new DataBaseTracker(getContext());
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ");
+                        String date = sdf.format(new Date());
+                        databasehelper=new Databasehelper(getContext());
+                        Cursor crdata1 = databasehelper.getItemID(na);
+                        while (crdata1.moveToNext()) {
+                            itemid = crdata1.getInt(0);
+                            if (itemid > -1) {
+                                dataBaseTracker.setCompleted(itemid,na,date,com);}
+                        }
                         compoundButton.setChecked(true);
 
                     }
                     else{
                         com=0;
                         updatedcom(na,com);
+                        DataBaseTracker dataBaseTracker=new DataBaseTracker(getContext());
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ");
+                        String date = sdf.format(new Date());
+                        databasehelper=new Databasehelper(getContext());
+                        Cursor crdata1 = databasehelper.getItemID(na);
+                        while (crdata1.moveToNext()) {
+                            itemid = crdata1.getInt(0);
+                            if (itemid > -1) {
+                        dataBaseTracker.setCompleted(itemid,na,date,com);}
+                        }
                         compoundButton.setChecked(false);
                     }
                 }

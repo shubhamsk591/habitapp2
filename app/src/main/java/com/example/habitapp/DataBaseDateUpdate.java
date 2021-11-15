@@ -40,8 +40,8 @@ public class DataBaseDateUpdate extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(Col2,next);
-        String where =Col1 +" = 1 ";
-        long result=db.update(TABLE_Name,contentValues,where,null);
+        String where =Col1 +" = ?";
+        long result=db.update(TABLE_Name,contentValues,where,new String[]{String.valueOf(1)});
         db.close();
         return result != -1;
 }

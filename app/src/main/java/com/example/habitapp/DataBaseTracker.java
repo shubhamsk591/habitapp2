@@ -22,7 +22,7 @@ public class DataBaseTracker extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String  createtable="CREATE TABLE "+TABLE_Name+" (Id INTEGER Primary key AutoIncrement ,"+Col2+" Integer NOT NULL ,"+Col5+" Text not null , " +Col4+ " Text not null ,"+Col5+" int not null );";
+        String  createtable="CREATE TABLE "+TABLE_Name+" (Id INTEGER Primary key AutoIncrement ,"+Col2+" Integer NOT NULL ,"+Col3+" Text not null , " +Col4+ " Text not null ,"+Col5+" int not null );";
         sqLiteDatabase.execSQL(createtable);
 
     }
@@ -44,11 +44,11 @@ public class DataBaseTracker extends SQLiteOpenHelper {
         long result=db.insert(TABLE_Name,null,contentValues);
         return result != -1;
     }
-    public boolean setCompleted(int id,String name,String date,int com){
+    public boolean setCompleted(int idname,String name,String date,int com){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(Col4,com);
-        String where =Col3 +" = ? And "+Col4+" = ?";
+        String where =Col2 +" = '"+idname+"' And "+Col3 +" = ? And "+Col4+" = ?";
         String args[]={name,date};
         long result=db.update(TABLE_Name,contentValues,where,args);
         return result!=-1;

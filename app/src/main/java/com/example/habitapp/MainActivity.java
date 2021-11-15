@@ -6,15 +6,10 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
-import com.google.android.material.tabs.TabItem;
-import com.google.android.material.tabs.TabLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity  {
     @Override
@@ -40,7 +35,7 @@ public class MainActivity extends AppCompatActivity  {
             //show your dialog here
             openPopUpWindow();
             DataBaseDateUpdate dataBaseDateUpdate=new DataBaseDateUpdate(getApplicationContext());
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ", Locale.US);
             String currentDate = sdf.format(new Date());
             dataBaseDateUpdate.updatedate(currentDate);
             getLogin();
