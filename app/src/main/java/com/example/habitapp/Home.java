@@ -105,16 +105,18 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         String currentDateandTime = sdf.format(new Date());
         Log.d("Time", "hjh " + currentDateandTime);
         DataBaseDateUpdate dataBaseDateUpdate = new DataBaseDateUpdate(getApplicationContext());
-        String stdate = dataBaseDateUpdate.getdate();
-        if (!stdate.equals(currentDateandTime)) {
-            openPopUpWindow();
-            dataBaseDateUpdate.updatedate(currentDateandTime);
-            addnewentryfor(currentDateandTime);
-
-            //change listview of home 0
-        }
-    }
-
+        Cursor stdate = dataBaseDateUpdate.getdate();
+        while(stdate.moveToNext()){
+            String pre=stdate.getString(1);
+            Log.d("Time", "hjh " + pre);
+            if (pre!=currentDateandTime) {
+                openPopUpWindow();
+                boolean a = dataBaseDateUpdate.updatedate(currentDateandTime);
+                    if (a) {
+                        addnewentryfor(currentDateandTime);
+                           }
+                }
+        } }
     private void addnewentryfor(String time) {
         DataBaseTracker dataBaseTracker=new DataBaseTracker(getApplicationContext());
         Databasehelper databasehelper=new Databasehelper(getApplicationContext());
@@ -123,7 +125,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             int id=cdata.getInt(0);
             String name=cdata.getString(1);
             dataBaseTracker.addDatabaseitemtracker(id,name,time,0);
-
+            databasehelper.setCompleted(id,name,0);
 
         }
     }

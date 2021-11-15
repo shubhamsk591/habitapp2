@@ -39,8 +39,8 @@ public class DataBaseTracker extends SQLiteOpenHelper {
         contentValues.put(Col2,id);
         contentValues.put(Col3,name);
         Log.d("Name ","hahn: "+name);
-        contentValues .put(Col3,date);
-        contentValues.put(Col4,com);
+        contentValues .put(Col4,date);
+        contentValues.put(Col5,com);
         long result=db.insert(TABLE_Name,null,contentValues);
         return result != -1;
     }
