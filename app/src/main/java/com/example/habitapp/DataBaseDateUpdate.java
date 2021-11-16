@@ -39,7 +39,7 @@ public class DataBaseDateUpdate extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(Col2,next);
-        String where =Col1 +" = '1' ";
+        String where =Col1 +" = ' 1 ' ";
         long result=db.update(TABLE_Name,contentValues,where,null);
         return result != -1;
 }

@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-
 
 
 public class Fragment3 extends Fragment {
@@ -23,6 +23,7 @@ public class Fragment3 extends Fragment {
         View v = inflater.inflate(R.layout.achievement,container,false);
         EditText searchView=v.findViewById(R.id.SearchBar);
         ImageButton imageButton=v.findViewById(R.id.searchbutton);
+        TableLayout tb =(TableLayout)v.findViewById(R.id.tablelayout);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,17 +35,24 @@ public class Fragment3 extends Fragment {
                     itemid=item.getInt(0);
                     if(itemid>-1){
                         Cursor t=new DataBaseTracker(getContext()).getdetail(itemid,name);
-                        updateCalender();
-                    }
+                        while(t.moveToNext()){
+                            View tableRow = LayoutInflater.from(getContext()).inflate(R.layout.tablerow,null,false);
+                            TextView name1  = (TextView) tableRow.findViewById(R.id.name1);
+                            TextView title  = (TextView) tableRow.findViewById(R.id.title1);
+
+
+                            name1.setText(t.getString(4));
+                            title.setText(t.getInt(5));
+                            tb.addView(tableRow);
+
+                        }
+                        t.close();
+                        }
                     else{
                         ToastMessage("Name not found ");
                     }
                 }
 
-            }
-
-            private void updateCalender() {
-                //fetch calender
             }
 
             private void ToastMessage(String st) {
@@ -55,3 +63,23 @@ public class Fragment3 extends Fragment {
     }
 }
 
+/*private TableLayout tableLayout;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.table);
+        tableLayout=(TableLayout)findViewById(R.id.tableLayout);
+
+       data.moveToFirst();
+       do {
+            View tableRow = LayoutInflater.from(this).inflate(R.layout.table_item,null,false);
+            TextView name  = (TextView) tableRow.findViewById(R.id.name);
+            TextView title  = (TextView) tableRow.findViewById(R.id.title);
+
+
+            name.setText(data.getString(1));
+            title.setText(data.getString(2));
+            tableLayout.addView(tableRow);
+
+        } while (data.moveToNext());
+        data.close();*/

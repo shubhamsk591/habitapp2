@@ -14,18 +14,18 @@
         android:weightSum="1"
         android:orientation="horizontal">
         <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/search_barlabel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/Search"
-            android:layout_weight="0.8"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+            android:id="@+id/search_barlabel"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/SearchBar" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:hint="@string/Search"
+            android:layout_weight="0.8"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/SearchBar" />
+        </com.google.android.material.textfield.TextInputLayout>
         <ImageButton
             android:id="@+id/searchbutton"
             android:layout_width="wrap_content"
@@ -38,9 +38,12 @@
     </LinearLayout>
 
 
-    <CalendarView
-        android:id="@+id/callenderview"
+    <TableLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:id="@+id/tablelayout">
+    </TableLayout>
 
 </LinearLayout>
