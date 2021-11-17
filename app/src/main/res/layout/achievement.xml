@@ -15,12 +15,13 @@
         android:id="@+id/habitname"
         android:text="@string/Name"
         android:layout_margin="5dp"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:layout_weight="0.2"
         />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:textSize="24sp"
             android:id="@+id/habitnametoknow"
             android:layout_weight="0.6"
             android:layout_margin="5dp"
