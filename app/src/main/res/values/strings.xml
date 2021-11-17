@@ -69,6 +69,7 @@
     <string name="Save">Save</string>
     <string name="Delete">Delete</string>
     <string name="Completed">Completed</string>
+    <string name="search">Search</string>
     <string-array name="Completeoption">
         <item>No</item>
         <item>Yes</item>

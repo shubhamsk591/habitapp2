@@ -164,4 +164,13 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent in=new Intent(Intent.ACTION_MAIN);
+
+        in.addCategory(Intent.CATEGORY_HOME);
+        startActivity(in);
+        finish();
+        System.exit(0);
+    }
 }
