@@ -103,20 +103,23 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private void timeupdate() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ", Locale.US);
         String currentDateandTime = sdf.format(new Date());
-        Log.d("Time", "hjh " + currentDateandTime);
         DataBaseDateUpdate dataBaseDateUpdate = new DataBaseDateUpdate(getApplicationContext());
         Cursor stdate = dataBaseDateUpdate.getdate();
-        while(stdate.moveToNext()){
+        stdate.moveToFirst();
             String pre=stdate.getString(1);
-            Log.d("Time", "hjh " + pre);
-            if (pre!=currentDateandTime) {
+            if (pre.equals(currentDateandTime)) {
+                Log.d("if ","Work");
+               return;
+                }
+            else{
+                Log.d("else ","Work");
                 openPopUpWindow();
                 boolean a = dataBaseDateUpdate.updatedate(currentDateandTime);
-                    if (a) {
-                        addnewentryfor(currentDateandTime);
-                           }
+                if (a) {
+                    addnewentryfor(currentDateandTime);
                 }
-        } }
+            }
+        }
     private void addnewentryfor(String time) {
         DataBaseTracker dataBaseTracker=new DataBaseTracker(getApplicationContext());
         Databasehelper databasehelper=new Databasehelper(getApplicationContext());
@@ -133,7 +136,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
-        Log.d("bjhitem","njsniv "+item.getItemId());
         switch(item.getItemId()){
 
             case R.id.Home_item:
