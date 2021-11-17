@@ -27,7 +27,7 @@
     <string name="Username">Username</string>
     <string name="LoginPassword">Password</string>
     <string name="Cancel">Cancel</string>
-    <string name="Register">Sign In</string>
+    <string name="Register">Create new Account</string>
     <string name="WelcomeLogin">Welcome after login</string>
 
     <string name="ListHere">Add list of habit</string>
