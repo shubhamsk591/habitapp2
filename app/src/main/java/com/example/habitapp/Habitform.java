@@ -1,6 +1,7 @@
 package com.example.habitapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -91,6 +92,11 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                 Log.d("you","are checking insert");
                 if(insert){
                     ToastMessage("Details filled inserted ");
+                    Cursor cr=dmhelper.getItemID(nametxt);
+                    cr.moveToFirst();
+                    int id=cr.getInt(0);
+                    DataBaseTracker dbt=new DataBaseTracker(getApplicationContext());
+                    dbt.addDatabaseitemtracker(id,nametxt,date,0);
 
                 }
                 else{

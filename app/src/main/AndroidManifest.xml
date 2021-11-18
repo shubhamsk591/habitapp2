@@ -66,6 +66,9 @@
             android:exported="true">
 
         </activity>
+        <activity android:name=".DetailsAchieved"
+            android:label="@string/Achievement"
+            android:exported="true"/>
     </application>
 
 </manifest>

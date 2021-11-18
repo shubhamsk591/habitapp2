@@ -54,11 +54,10 @@ public class DataBaseTracker extends SQLiteOpenHelper {
 }
     public Cursor getdetail(int id,String name){
         SQLiteDatabase bdi2=this.getReadableDatabase();
-        String st2="SELECT * FROM "+TABLE_Name+" WHERE "+Col2+" = "+id+" And "+Col3+" = '"+name+"' ;";
+        String st2="SELECT * FROM "+TABLE_Name+" WHERE "+Col2+" = "+id+" And "+Col3+" = '"+name+"'";
         Log.d("hjckj ","uchiu"+st2);
         Cursor s2=bdi2.rawQuery(st2,null);
         Log.d("hjckj ","uchiu"+s2);
-        s2.close();
         return s2;
     }
 
