@@ -2,7 +2,8 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/addlist"
@@ -14,28 +15,37 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         android:text="@string/ListHere" />
+
     <LinearLayout
         android:id="@+id/linearlist1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/addlist">
+        android:layout_below="@id/addlist"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp">
 
-    <ListView
-        android:id="@+id/listView_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        <ListView
+            android:id="@+id/listView_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    </ListView>
+        </ListView>
     </LinearLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:layout_alignEnd="@id/linearlist1"
         android:layout_alignBottom="@id/linearlist1"
+        android:layout_gravity="bottom"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:baselineAlignBottom="true"
         android:contentDescription="@string/add_habit"
-       android:baselineAlignBottom="true"
-        android:src="@android:drawable/ic_input_add" />
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/teal_200"
+        app:tint="@color/white" />
 
 </RelativeLayout>

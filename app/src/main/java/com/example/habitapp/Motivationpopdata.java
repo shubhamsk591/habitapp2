@@ -33,8 +33,8 @@ public class Motivationpopdata extends AsyncTask<Void,Void,Void> {
             JSONArray JSArray=new JSONArray(data);
             JSONObject jsonObject= (JSONObject) JSArray.get(geti());
             Log.d("car","Text i  "+i);
-            singleparsed="Quotes:"+jsonObject.get("quote")+"\n"+
-                    "Author:"+jsonObject.get("author")+"\n";
+            singleparsed="\""+jsonObject.get("quote")+"\"\n\n"+
+                    " - "+jsonObject.get("author")+"\n";
 
         } catch (IOException | JSONException e) {
             e.printStackTrace();

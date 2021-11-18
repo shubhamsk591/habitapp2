@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 
@@ -25,6 +27,10 @@ public class Fragment1 extends Fragment {
         databasehelper = new Databasehelper(getActivity());
         listview=v.findViewById(R.id.listViewhome_item);
 
+        FloatingActionButton fab = v.findViewById(R.id.modify_frag1);
+        fab.setOnClickListener(v1 -> {
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.view_pager, new Fragment2()).addToBackStack(null).commit();
+        });
 
         populatelist();
         return v;
@@ -34,7 +40,6 @@ public class Fragment1 extends Fragment {
         ArrayList<String> arrayList = new ArrayList<>();
         while (cdata.moveToNext()) {
             arrayList.add(cdata.getString(1));
-
         }
         Homelistitemadapter adapter = new Homelistitemadapter(getContext(),arrayList);
         listview.setAdapter(adapter);

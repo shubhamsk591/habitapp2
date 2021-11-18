@@ -1,7 +1,7 @@
 package com.example.habitapp;
 
 import android.content.Intent;
-import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -15,24 +15,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
-
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
-    ViewPager pages;
+    ViewPager2 pager;
     TabLayout mtablayout;
     TabItem firstitem,seconditem,thirditem;
-    FragmentPagerAdapter adapter;
+    FragmentStateAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,27 +38,29 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         getUIid();
         //for navigation drawer
         drawerfunction();
-        //check date
-        timeupdate();
-        adapter =new PageAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,mtablayout.getTabCount());
-        pages.setAdapter(adapter);
-        mtablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.view_pager, new Fragment1()).commit();
+
+        /*adapter = new FragmentStateAdapter(getSupportFragmentManager(), getLifecycle()) {
+            @NonNull
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                pages.setCurrentItem(tab.getPosition());
+            public Fragment createFragment(int position) {
+                if(position == 0)
+                    return new Fragment1();
+                else if(position == 1)
+                    return new Fragment2();
+                else
+                    return new Fragment3();
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
+            public int getItemCount() {
+                return 3;
             }
+        };
+        pager = (ViewPager2)findViewById(R.id.view_pager);
+        pager.setAdapter(adapter);*/
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-        pages.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mtablayout));
         ImageButton motivationButton=findViewById(R.id.motivation_button);
         motivationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,66 +83,48 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     private void getUIid() {
         drawerLayout=(DrawerLayout) findViewById(R.id.drawer);
-        pages=findViewById(R.id.view_pager);
-        mtablayout=findViewById(R.id.tabLayout);
+        //pager=findViewById(R.id.view_pager);
+        /*mtablayout=findViewById(R.id.tabLayout);
         firstitem=findViewById(R.id.firsttab);
         seconditem=findViewById(R.id.secondtab);
-        thirditem=findViewById(R.id.thirdtab);
+        thirditem=findViewById(R.id.thirdtab);*/
         NavigationView navigationView=(NavigationView) findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(this);
 
     }
 
-
-
     private void openPopUpWindow() {
         Intent popupw=new Intent(getApplicationContext(),Popup.class);
         startActivity(popupw);
     }
-    private void timeupdate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ", Locale.US);
-        String currentDateandTime = sdf.format(new Date());
-        Log.d("Time", "hjh " + currentDateandTime);
-        DataBaseDateUpdate dataBaseDateUpdate = new DataBaseDateUpdate(getApplicationContext());
-        Cursor stdate = dataBaseDateUpdate.getdate();
-        while(stdate.moveToNext()){
-            String pre=stdate.getString(1);
-            Log.d("Time", "hjh " + pre);
-            if (pre!=currentDateandTime) {
-                openPopUpWindow();
-                boolean a = dataBaseDateUpdate.updatedate(currentDateandTime);
-                    if (a) {
-                        addnewentryfor(currentDateandTime);
-                           }
-                }
-        } }
-    private void addnewentryfor(String time) {
-        DataBaseTracker dataBaseTracker=new DataBaseTracker(getApplicationContext());
-        Databasehelper databasehelper=new Databasehelper(getApplicationContext());
-        Cursor cdata = databasehelper.getdata();
-        while (cdata.moveToNext()) {
-            int id=cdata.getInt(0);
-            String name=cdata.getString(1);
-            dataBaseTracker.addDatabaseitemtracker(id,name,time,0);
-            databasehelper.setCompleted(id,name,0);
 
-        }
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
         Log.d("bjhitem","njsniv "+item.getItemId());
+
+        FragmentTransaction ft;
         switch(item.getItemId()){
 
             case R.id.Home_item:
                 openPopUpWindow();
+                ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.view_pager, new Fragment1());
+                ft.commit();
+                break;
+            case R.id.Achievement:
+                ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.view_pager, new Fragment3());
+                ft.commit();
                 break;
             case R.id.Setting_item:
                 Toast.makeText(getApplicationContext(),"Welcome to change theme",Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.Rating_item:
-                Toast.makeText(this,R.string.Rating,Toast.LENGTH_SHORT).show();
+            case R.id.FAQ_item:
+                Intent in=new Intent(Intent.ACTION_VIEW);
+                in.setData(Uri.parse("https://shubhamsk591.github.io/FAQ/faq-template-master/faq-template-master/index.html"));
+                startActivity(in);
                 break;
             case R.id.ContactUs_item:
                 Toast.makeText(this,R.string.ContactUs,Toast.LENGTH_SHORT).show();
@@ -160,6 +141,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         }
         return false;
 
+    }
+    @Override
+    public void onBackPressed() {
+        Intent in=new Intent(Intent.ACTION_MAIN);
+
+        in.addCategory(Intent.CATEGORY_HOME);
+        startActivity(in);
+        finish();
+        System.exit(0);
     }
 
 }

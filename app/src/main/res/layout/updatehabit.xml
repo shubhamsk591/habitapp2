@@ -92,18 +92,20 @@
                     android:hint="@string/ExTarget"
                     android:id="@+id/uinput_target"/>
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/utext_input_reminder"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
                 android:layout_weight="0.5"
                 android:hint="@string/Reminder"
+                app:helperText="@string/Reminder"
                 app:layout_constraintEnd_toEndOf="parent"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linear1" >
+                app:layout_constraintTop_toBottomOf="@id/linear1">
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/ureminder_input"
@@ -136,21 +138,12 @@
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <CheckBox
-                android:id="@+id/input_completed"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:text="@string/Completed"/>
             <Button
                 android:id="@+id/save_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/Save"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:text="Update">
 
             </Button>
 

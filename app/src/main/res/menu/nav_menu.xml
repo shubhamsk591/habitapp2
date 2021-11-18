@@ -6,12 +6,16 @@
         android:title="@string/Home"
         android:icon="@drawable/ic_home_item_icon"/>
     <item
+        android:id="@+id/Achievement"
+        android:icon="@drawable/ic_category_item_icon"
+        android:title="@string/Achievement" />
+    <item
         android:id="@+id/Setting_item"
         android:title="@string/Setting"
         android:icon="@drawable/ic_settings_item_icon"/>
     <item
-        android:id="@+id/Rating_item"
-        android:title="@string/Rating"
+        android:id="@+id/FAQ_item"
+        android:title="@string/FAQ"
         android:icon="@drawable/ic_rating_item_icon"/>
     <item
         android:id="@+id/ContactUs_item"

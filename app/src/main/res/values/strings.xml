@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Habit Tracker app</string>
+    <string name="app_name">Habit Tracker</string>
     //added for tabs
 //content xml
     <string name="Habit_tab">Home</string>
@@ -12,8 +12,8 @@
     <string name="Categories">Categories</string>
     <string name="Setting">Setting</string>
     <string name="ContactUs">Contact Us</string>
-    <string name="Rating">Rating</string>
-    <string name="Login">Login</string>
+    <string name="FAQ">FAQ</string>
+    <string name="Login">Log In</string>
     <string name="SignIn">SignUp</string>
 
 //HOME PAGE
@@ -27,7 +27,7 @@
     <string name="Username">Username</string>
     <string name="LoginPassword">Password</string>
     <string name="Cancel">Cancel</string>
-    <string name="Register">Sign In</string>
+    <string name="Register">Sign Up</string>
     <string name="WelcomeLogin">Welcome after login</string>
 
     <string name="ListHere">Add list of habit</string>
@@ -69,6 +69,7 @@
     <string name="Save">Save</string>
     <string name="Delete">Delete</string>
     <string name="Completed">Completed</string>
+    <string name="Modify">Modify</string>
     <string-array name="Completeoption">
         <item>No</item>
         <item>Yes</item>

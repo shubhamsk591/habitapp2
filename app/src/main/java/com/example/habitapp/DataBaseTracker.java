@@ -24,7 +24,6 @@ public class DataBaseTracker extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String  createtable="CREATE TABLE "+TABLE_Name+" (Id INTEGER Primary key AutoIncrement ,"+Col2+" Integer NOT NULL ,"+Col3+" Text not null , " +Col4+ " Text not null ,"+Col5+" int not null );";
         sqLiteDatabase.execSQL(createtable);
-
     }
 
     @Override

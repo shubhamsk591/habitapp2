@@ -62,7 +62,6 @@ public class Homelistitemadapter extends ArrayAdapter<String> {
                                 dataBaseTracker.setCompleted(itemid,na,date,com);}
                         }
                         compoundButton.setChecked(true);
-
                     }
                     else{
                         com=0;

@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Updatahabit extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private EditText ueditname,uedunit,uedquestion,uednotes,uedtarget;
     private Spinner ureminder;
-    private CheckBox ucomplete;
+    //private CheckBox ucomplete;
     private int completed=0;
     private String old="",unametxt="",uquestiontxt="",unotestxt="",uunittxt="",utargettxt="";
     private int urm=0,id=-1;
@@ -36,7 +36,7 @@ public class Updatahabit extends AppCompatActivity implements AdapterView.OnItem
         uednotes = findViewById(R.id.unotes_input);
         uedunit = findViewById(R.id.uinput_unit);
         ureminder = findViewById(R.id.ureminder_input);
-        ucomplete=findViewById(R.id.input_completed);
+        // ucomplete=findViewById(R.id.input_completed);
         fetchvalueinsertedup();
         arrayAdapter = new ArrayAdapter<>(Updatahabit.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Reminderoption));
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -105,8 +105,18 @@ public class Updatahabit extends AppCompatActivity implements AdapterView.OnItem
     }
     private void fetchvalueinsertedup() {
         Intent nowupdate = getIntent();
-        id = nowupdate.getIntExtra("Id", -1);//default
-        old=nowupdate.getStringExtra("Name");
+        if(nowupdate.hasExtra("Id")) {
+            id = nowupdate.getIntExtra("Id", -1);   //default
+        }
+        else{
+            Log.d("Ravis","Id in fetchvalueinsertedup is null");
+        }
+        if(nowupdate.hasExtra("Name")){
+            old=nowupdate.getStringExtra("Name");
+        }else{
+            Log.d("Ravis","Name in fetchvalueinsertedup is null");
+        }
+
         Habits har= dmhelper.getvalueup(id);
         ueditname.setText(har.getName());
         uedquestion.setText(har.getQuestion());
@@ -121,23 +131,23 @@ public class Updatahabit extends AppCompatActivity implements AdapterView.OnItem
         else {
             ureminder.setSelection(0);
         }
-        if(completed == 1){
+        /*if(completed == 1){
             ucomplete.setChecked(true);
         }
         else{
             ucomplete.setChecked(false);
-        }
+        }*/
 
     }
     public int value(){
-        if(ucomplete.isChecked()){
+        /*if(ucomplete.isChecked()){
 
             completed=1;
 
         }
         else {
             completed=0;
-        }
+        }*/
         return completed;
     }
 
