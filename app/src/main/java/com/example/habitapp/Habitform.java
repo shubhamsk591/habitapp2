@@ -65,8 +65,9 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                 Log.d("you","are value inserted ");
                 if (nametxt.length() != 0 && questiontxt.length() != 0 && targettxt.length() != 0) {
                     Log.d("you","are after test");
-                    String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-                    AddData(nametxt, questiontxt, unittxt, targettxt, rm, notestxt, completed,date);
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ", Locale.US);
+                    String currentDate = sdf.format(new Date());
+                    AddData(nametxt, questiontxt, unittxt, targettxt, rm, notestxt, completed,currentDate);
                     Log.d("you","are add data after");
                     editname.setText("");
                     edquestion.setText("");
@@ -96,8 +97,10 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                     cr.moveToFirst();
                     int id=cr.getInt(0);
                     DataBaseTracker dbt=new DataBaseTracker(getApplicationContext());
-                    dbt.addDatabaseitemtracker(id,nametxt,date,0);
-
+                    boolean a=dbt.addDatabaseitemtracker(id,nametxt,date,0);
+                    if(a){
+                        ToastMessage("UpdateTracker");
+                    }
                 }
                 else{
                     ToastMessage("Details filled not inserted ");
