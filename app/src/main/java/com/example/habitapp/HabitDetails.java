@@ -8,7 +8,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HabitDetails extends AppCompatActivity {
-    private TextView ueditname, uedunit, uedquestion, uednotes, uedtarget,ureminder,ucomplete;
+    private TextView ueditname;
+    private TextView uedunit;
+    private TextView uedquestion;
+    private TextView uednotes;
+    private TextView uedtarget;
+    private TextView ureminder;
 
     Databasehelper dmhelper = new Databasehelper(this);
 
@@ -24,7 +29,7 @@ public class HabitDetails extends AppCompatActivity {
         uednotes = findViewById(R.id.dunotes_input);
         uedunit = findViewById(R.id.duinput_unit);
         ureminder = findViewById(R.id.dureminder_input);
-        ucomplete=findViewById(R.id.ducomplete_input);
+
         fetchvalueinsertedup();
     }
 
@@ -32,7 +37,7 @@ public class HabitDetails extends AppCompatActivity {
     private void fetchvalueinsertedup() {
         Intent nowupdate = getIntent();
         int id = nowupdate.getIntExtra("Id", -1);//default
-        int urm,complete;
+        int urm;
         Habits har= dmhelper.getvalueup(id);
         ueditname.setText(har.getName());
         uedquestion.setText(har.getQuestion());
@@ -41,19 +46,13 @@ public class HabitDetails extends AppCompatActivity {
         uednotes.setText(har.getNotes());
         urm=har.getReminder();
         Log.d("vuy","hvyu"+urm);
-        complete=har.getCompleted();
         if(urm == 0){
             ureminder.setText("Off");
         }
         else{
             ureminder.setText("On");
         }
-        if(complete == 0){
-            ucomplete.setText("No");
-        }
-        else{
-            ucomplete.setText("Yes");
-        }
+
 
     }
 
