@@ -59,6 +59,8 @@
     //Registration Form
     <string name="Rname">Name</string>
     <string name="ExRname">User</string>
+    <string name="Email">Email</string>
+    <string name="SignUp">Sign Up</string>
 
     //added motivation form
     <string name="back">Back</string>
@@ -76,4 +78,6 @@
     </string-array>
     //Progress
     <string name="Details">Details</string>
+    <string name="skip_for_now">Skip for now</string>
+    <string name="update">Update</string>
 </resources>

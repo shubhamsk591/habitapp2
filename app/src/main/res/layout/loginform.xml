@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,7 +17,8 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/password_input"
@@ -27,11 +28,12 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:hint="@string/LoginPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_input" />
+        app:layout_constraintTop_toBottomOf="@+id/username_input"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/Login_button"
@@ -40,7 +42,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
-        android:text="Sign In"
+        android:text="@string/SignIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_input" />
@@ -53,7 +55,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:background="@android:color/transparent"
-        android:text="Sign Up"
+        android:text="@string/SignUp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cancel_button"
@@ -66,7 +68,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:background="@android:color/transparent"
-        android:text="Skip for now"
+        android:text="@string/skip_for_now"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

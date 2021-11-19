@@ -40,7 +40,7 @@
         android:layout_alignEnd="@id/linearlist1"
         android:layout_alignBottom="@id/linearlist1"
         android:layout_gravity="bottom"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:baselineAlignBottom="true"
         android:contentDescription="@string/add_habit"
