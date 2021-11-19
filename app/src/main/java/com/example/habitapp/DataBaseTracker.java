@@ -70,17 +70,26 @@ public class DataBaseTracker extends SQLiteOpenHelper {
         db.close();
         return result != -1;
     }
-    public int getComplete(int id, String name)
-    {
+    public int getcomCount(int id,String name){
         SQLiteDatabase bdi2=this.getReadableDatabase();
-        String st2="SELECT * FROM "+TABLE_Name+" WHERE "+Col3+" = '"+name+"' And "+Col4+" = '"+name+"' ;";
-        Log.d("hjckj ","uchiu"+st2);
+        String st2="SELECT "+Col4+" , "+Col5+" FROM "+TABLE_Name+" WHERE "+Col2+" = "+id+" And "+Col3+" = '"+name+"'";
         Cursor s2=bdi2.rawQuery(st2,null);
-        int com=0;
+        int val=s2.getCount();
+        return val;
+    }
+    public int getCompletecount(int id,String name){
+        SQLiteDatabase bdi2=this.getReadableDatabase();
+        int count=0;
+        String st2="SELECT "+Col4+" , "+Col5+" FROM "+TABLE_Name+" WHERE "+Col2+" = "+id+" And "+Col3+" = '"+name+"'";
+        Cursor s2=bdi2.rawQuery(st2,null);
         while(s2.moveToNext()){
-            com=s2.getInt(4);
+            if(s2.getInt(1)==1){
+                count=count+1;
+            }
+            else{
+                count=count+0;
+            }
         }
-        return com;
-
+        return count;
     }
 }

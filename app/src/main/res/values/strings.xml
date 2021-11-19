@@ -74,4 +74,6 @@
         <item>No</item>
         <item>Yes</item>
     </string-array>
+    //Progress
+    <string name="Details">Details</string>
 </resources>

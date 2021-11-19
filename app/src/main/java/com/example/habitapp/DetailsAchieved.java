@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,11 +15,13 @@ import java.util.ArrayList;
 public class DetailsAchieved extends AppCompatActivity {
 
     ListView listView,listView1;
+    TextView tv;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailsacheved);
+        tv=findViewById(R.id.habitnametitle);
         listView=findViewById(R.id.listitemdatea);
         listView1=findViewById(R.id.listitemcoma);
     populate();
@@ -27,6 +30,7 @@ public class DetailsAchieved extends AppCompatActivity {
     private void populate() {
         Intent getupdate=getIntent();
         String name=getupdate.getStringExtra("Name");
+        tv.setText(name);
         int id=getupdate.getIntExtra("Id",-1);
         if(id>0){
 

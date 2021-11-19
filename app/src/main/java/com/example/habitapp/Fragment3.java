@@ -36,7 +36,7 @@ public class Fragment3 extends Fragment {
                 while (crdata.moveToNext()){
                     itemid=crdata.getInt(0);
                     if(itemid > -1){
-                        Intent update=new Intent(getActivity(),DetailsAchieved.class);
+                        Intent update=new Intent(getActivity(),Progress.class);
                         update.putExtra("Id",itemid);
                         update.putExtra("Name",name);
                         startActivity(update);
