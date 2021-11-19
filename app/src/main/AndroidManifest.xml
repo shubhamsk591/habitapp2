@@ -67,10 +67,10 @@
 
         </activity>
         <activity android:name=".DetailsAchieved"
-            android:label="@string/Achievement"
+            android:label="@string/Details"
             android:exported="true"/>
         <activity android:name=".Progress"
-            android:label="@string/Achievement"
+            android:label="@string/Progress"
             android:exported="true"/>
     </application>
 
