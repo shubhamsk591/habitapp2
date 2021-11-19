@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity  {
                 boolean a = dataBaseDateUpdate.updatedate(currentDateandTime);
                 if (a) {
                     addnewentryfor(currentDateandTime);
+                    getLogin();
                 }
             }
         }}
