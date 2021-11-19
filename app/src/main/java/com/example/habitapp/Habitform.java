@@ -21,8 +21,12 @@ import java.util.Locale;
 public class Habitform extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private EditText editname,edunit,edquestion,ednotes,edtarget;
     private Spinner reminder;
-    private int completed=0;
-    private String remindertxt,nametxt="",questiontxt="",notestxt="",unittxt="",targettxt="",date="";
+    private final int completed=0;
+    private String nametxt="";
+    private String questiontxt="";
+    private String notestxt="";
+    private String unittxt="";
+    private String targettxt="";
     private int rm=0;
 
     @Override
@@ -124,7 +128,7 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
     }
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            remindertxt = adapterView.getItemAtPosition(i).toString();
+        String remindertxt = adapterView.getItemAtPosition(i).toString();
             if(remindertxt.equals("On")){
             rm=1;
         }

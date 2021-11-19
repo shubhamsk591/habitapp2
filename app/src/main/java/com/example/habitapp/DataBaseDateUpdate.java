@@ -47,7 +47,5 @@ public class DataBaseDateUpdate extends SQLiteOpenHelper {
         SQLiteDatabase bdi2=this.getWritableDatabase();
         String st2="SELECT * FROM "+TABLE_Name+" WHERE "+Col1+" = '1'";
         Log.d("hjckj ","uchiu"+st2);
-        String prev=" ";
-        Cursor s2=bdi2.rawQuery(st2,null);
-        return s2;}
+        return bdi2.rawQuery(st2,null);}
 }

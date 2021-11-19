@@ -49,7 +49,7 @@ public class DataBaseTracker extends SQLiteOpenHelper {
         ContentValues contentValues=new ContentValues();
         contentValues.put(Col5,com);
         String where =Col2 +" = '"+idname+"' And "+Col3 +" = ? And "+Col4+" = ?";
-        String args[]={name,date};
+        String[] args ={name,date};
         contentValues .put(Col4,date);
         long result=db.update(TABLE_Name,contentValues,where,args);
         return result!=-1;
@@ -65,7 +65,7 @@ public class DataBaseTracker extends SQLiteOpenHelper {
     public boolean deletedataitem(int id,String name){
         SQLiteDatabase db=this.getWritableDatabase();
         String where =Col1 +" = '" +id+"' And "+Col2+" = ?";
-        String args[]={name};
+        String[] args ={name};
         long result=db.delete(TABLE_Name,where,args);
         db.close();
         return result != -1;
@@ -75,6 +75,7 @@ public class DataBaseTracker extends SQLiteOpenHelper {
         String st2="SELECT "+Col4+" , "+Col5+" FROM "+TABLE_Name+" WHERE "+Col2+" = "+id+" And "+Col3+" = '"+name+"'";
         Cursor s2=bdi2.rawQuery(st2,null);
         int val=s2.getCount();
+        s2.close();
         return val;
     }
     public int getCompletecount(int id,String name){
@@ -86,10 +87,8 @@ public class DataBaseTracker extends SQLiteOpenHelper {
             if(s2.getInt(1)==1){
                 count=count+1;
             }
-            else{
-                count=count+0;
-            }
         }
+        s2.close();
         return count;
     }
 }

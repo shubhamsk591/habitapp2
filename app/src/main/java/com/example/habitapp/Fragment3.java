@@ -32,7 +32,7 @@ public class Fragment3 extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name=adapterView.getItemAtPosition(i).toString();
                 Cursor crdata=databasehelper.getItemID(name);
-                int itemid=-1;
+                int itemid;
                 while (crdata.moveToNext()){
                     itemid=crdata.getInt(0);
                     if(itemid > -1){
@@ -43,7 +43,7 @@ public class Fragment3 extends Fragment {
                     }
                     else
                     {
-                        Toastmessage("wrong id");
+                        Toast.makeText(getActivity(), "wrong id",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -63,7 +63,5 @@ public class Fragment3 extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1,arrayList);
         listview.setAdapter(adapter);
     }
-    private void Toastmessage(String st){
-        Toast.makeText(getActivity(),st,Toast.LENGTH_SHORT).show();
-    }
+
 }

@@ -16,19 +16,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabItem;
-import com.google.android.material.tabs.TabLayout;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
-    ViewPager2 pager;
-    TabLayout mtablayout;
-    TabItem firstitem,seconditem,thirditem;
-    FragmentStateAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,25 +34,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         getSupportFragmentManager().beginTransaction().replace(R.id.view_pager, new Fragment1()).commit();
 
-        /*adapter = new FragmentStateAdapter(getSupportFragmentManager(), getLifecycle()) {
-            @NonNull
-            @Override
-            public Fragment createFragment(int position) {
-                if(position == 0)
-                    return new Fragment1();
-                else if(position == 1)
-                    return new Fragment2();
-                else
-                    return new Fragment3();
-            }
 
-            @Override
-            public int getItemCount() {
-                return 3;
-            }
-        };
-        pager = (ViewPager2)findViewById(R.id.view_pager);
-        pager.setAdapter(adapter);*/
 
         ImageButton motivationButton=findViewById(R.id.motivation_button);
         motivationButton.setOnClickListener(new View.OnClickListener() {
@@ -83,11 +58,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     private void getUIid() {
         drawerLayout=(DrawerLayout) findViewById(R.id.drawer);
-        //pager=findViewById(R.id.view_pager);
-        /*mtablayout=findViewById(R.id.tabLayout);
-        firstitem=findViewById(R.id.firsttab);
-        seconditem=findViewById(R.id.secondtab);
-        thirditem=findViewById(R.id.thirdtab);*/
+
         NavigationView navigationView=(NavigationView) findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -153,3 +124,31 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
 }
+  /*
+         ViewPager2 pager;
+    TabLayout mtablayout;
+    TabItem firstitem,seconditem,thirditem;
+    FragmentStateAdapter adapter;adapter = new FragmentStateAdapter(getSupportFragmentManager(), getLifecycle()) {
+            @NonNull
+            @Override
+            public Fragment createFragment(int position) {
+                if(position == 0)
+                    return new Fragment1();
+                else if(position == 1)
+                    return new Fragment2();
+                else
+                    return new Fragment3();
+            }
+
+            @Override
+            public int getItemCount() {
+                return 3;
+            }
+        };
+        pager = (ViewPager2)findViewById(R.id.view_pager);
+        pager.setAdapter(adapter);*/
+//pager=findViewById(R.id.view_pager);
+        /*mtablayout=findViewById(R.id.tabLayout);
+        firstitem=findViewById(R.id.firsttab);
+        seconditem=findViewById(R.id.secondtab);
+        thirditem=findViewById(R.id.thirdtab);*/

@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class Homelistitemadapter extends ArrayAdapter<String> {
     ArrayList<String> list;
@@ -52,14 +53,21 @@ public class Homelistitemadapter extends ArrayAdapter<String> {
                         com=1;
                         updatedcom(na,com);
                         DataBaseTracker dataBaseTracker=new DataBaseTracker(getContext());
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ");
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ", Locale.US);
                         String date = sdf.format(new Date());
                         databasehelper=new Databasehelper(getContext());
                         Cursor crdata1 = databasehelper.getItemID(na);
                         while (crdata1.moveToNext()) {
                             itemid = crdata1.getInt(0);
                             if (itemid > -1) {
-                                dataBaseTracker.setCompleted(itemid,na,date,com);}
+                                boolean a=dataBaseTracker.setCompleted(itemid,na,date,com);
+                                if(a){
+                                    Toastmessage("Sucessfull to Change in Tracker");
+                                }
+                                else{
+                                    Toastmessage("Failed to Change in Tracker");
+                                }
+                            }
                         }
                         compoundButton.setChecked(true);
                     }
@@ -67,15 +75,21 @@ public class Homelistitemadapter extends ArrayAdapter<String> {
                         com=0;
                         updatedcom(na,com);
                         DataBaseTracker dataBaseTracker=new DataBaseTracker(getContext());
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ");
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ",Locale.US);
                         String date = sdf.format(new Date());
                         databasehelper=new Databasehelper(getContext());
                         Cursor crdata1 = databasehelper.getItemID(na);
                         while (crdata1.moveToNext()) {
                             itemid = crdata1.getInt(0);
                             if (itemid > -1) {
-                        dataBaseTracker.setCompleted(itemid,na,date,com);}
-                        }
+                        boolean a=dataBaseTracker.setCompleted(itemid,na,date,com);
+                                if(a){
+                                    Toastmessage("Sucessfull to Change in Tracker");
+                                }
+                                else{
+                                    Toastmessage("Failed to Change in Tracker");
+                                }
+                            }}
                         compoundButton.setChecked(false);
                     }
                 }
@@ -94,12 +108,7 @@ public class Homelistitemadapter extends ArrayAdapter<String> {
             if (itemid > -1) {
                 ha = databasehelper.getvalueup(itemid);
                 com=ha.getCompleted();
-                if(com==1){
-                    checkBox.setChecked(true);
-                }
-                else {
-                    checkBox.setChecked(false);
-                }
+                checkBox.setChecked(com == 1);
             }
         }
 

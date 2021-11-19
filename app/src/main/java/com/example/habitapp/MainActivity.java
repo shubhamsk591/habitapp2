@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -77,8 +78,13 @@ public class MainActivity extends AppCompatActivity  {
             DataBaseDateUpdate dataBaseDateUpdate=new DataBaseDateUpdate(getApplicationContext());
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ", Locale.US);
             String currentDate = sdf.format(new Date());
-            dataBaseDateUpdate.updatedate(currentDate);
-            getLogin();
+            boolean a=dataBaseDateUpdate.addDatabaseitemdate(currentDate);
+            if(a){
+                getLogin();
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "There is some problem.Restart again", Toast.LENGTH_SHORT).show();
+            }
             //change the value of your sharedPreferences
             sharedPreferences.edit().putBoolean("IS_FIRST_TIME", false).apply();
         }

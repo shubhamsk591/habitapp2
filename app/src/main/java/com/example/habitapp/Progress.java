@@ -39,8 +39,7 @@ public class Progress extends AppCompatActivity {
         DataBaseTracker dbt=new DataBaseTracker(getApplicationContext());
         int count=dbt.getcomCount(id,name);
         int pr=dbt.getCompletecount(id,name);
-        int val=(int)((pr/count)*100);
-        return val;
+        return (int)((pr/count)*100);
     }
 
     private void update() {

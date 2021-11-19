@@ -44,7 +44,7 @@ public class Fragment2 extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name=adapterView.getItemAtPosition(i).toString();
                 Cursor crdata=databasehelper.getItemID(name);
-                int itemid=-1;
+                int itemid;
                 while (crdata.moveToNext()){
                     itemid=crdata.getInt(0);
                     if(itemid > -1){

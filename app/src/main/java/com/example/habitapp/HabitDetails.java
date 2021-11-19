@@ -5,15 +5,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.ArrayList;
 
 public class HabitDetails extends AppCompatActivity {
     private TextView ueditname, uedunit, uedquestion, uednotes, uedtarget,ureminder,ucomplete;
 
-    private int id = -1;
     Databasehelper dmhelper = new Databasehelper(this);
 
     @Override
@@ -35,8 +31,8 @@ public class HabitDetails extends AppCompatActivity {
 //getvalue
     private void fetchvalueinsertedup() {
         Intent nowupdate = getIntent();
-        id = nowupdate.getIntExtra("Id", -1);//default
-        int urm=0,complete=0;
+        int id = nowupdate.getIntExtra("Id", -1);//default
+        int urm,complete;
         Habits har= dmhelper.getvalueup(id);
         ueditname.setText(har.getName());
         uedquestion.setText(har.getQuestion());

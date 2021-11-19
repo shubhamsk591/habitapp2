@@ -94,7 +94,7 @@ public class Listitemadapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View view) {
                     String name=list.get(position);
-                    int itemid=-1;
+                    int itemid;
                     Log.d("Tag","Reached");
                     Databasehelper databasehelper=new Databasehelper(getContext());
                     Cursor cursor=databasehelper.getItemID(name);

@@ -108,7 +108,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         contentValues.put(Col8,com);
         Log.d(TAG,"are update value");
         String where =Col1 +" = '" +i+"' And "+Col2+" = ?";
-        String args[]={oldname};
+        String[] args ={oldname};
         long result=db.update(TABLE_Name,contentValues,where,args);
         db.close();
         Log.d(TAG,"are returning boolean");
@@ -117,7 +117,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     public boolean deletedata(int i,String name){
         SQLiteDatabase db=this.getWritableDatabase();
         String where =Col1 +" = '" +i+"' And "+Col2+" = ?";
-        String args[]={name};
+        String[] args ={name};
         long result=db.delete(TABLE_Name,where,args);
         db.close();
         Log.d(TAG,"are returning boolean");
@@ -128,7 +128,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         ContentValues contentValues=new ContentValues();
         contentValues.put(Col8,com);
         String where =Col1 +" = '" +i+"' And "+Col2+" = ?";
-        String args[]={name};
+        String[] args ={name};
         long result=db.update(TABLE_Name,contentValues,where,args);
         return result!=-1;
 
