@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -76,11 +75,17 @@ public class Listitemadapter extends ArrayAdapter<String> {
                             boolean del = databasehelper.deletedata(itemid, name);
                             if (del) {
                                 Toastmessage("Sucessfully deleted ");
-                                Intent ab = new Intent(getContext(), MainActivity.class);
+                                DataBaseTracker dbt=new DataBaseTracker(getContext());
+                                boolean a=dbt.deletedataitem(itemid,name);
+                                if(a){Toastmessage("Sucessfully deleted from tracker");}
+                                else{
+                                    Toastmessage("Failed delete from tracker ");
+                                }
+                                Intent ab = new Intent(getContext(), Home.class);
                                 context.startActivity(ab);
                             }} else {
                                 Toastmessage("Failed to delete ");
-                                Intent ab = new Intent(getContext(), MainActivity.class);
+                                Intent ab = new Intent(getContext(), Home.class);
                                 context.startActivity(ab);
                             }
                         }}

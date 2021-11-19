@@ -62,8 +62,15 @@ public class DataBaseTracker extends SQLiteOpenHelper {
         Log.d("hjckj ","uchiu"+s2);
         return s2;
     }
-
-    public int getComplete(int id, String name, String Date)
+    public boolean deletedataitem(int id,String name){
+        SQLiteDatabase db=this.getWritableDatabase();
+        String where =Col1 +" = '" +id+"' And "+Col2+" = ?";
+        String args[]={name};
+        long result=db.delete(TABLE_Name,where,args);
+        db.close();
+        return result != -1;
+    }
+    public int getComplete(int id, String name)
     {
         SQLiteDatabase bdi2=this.getReadableDatabase();
         String st2="SELECT * FROM "+TABLE_Name+" WHERE "+Col3+" = '"+name+"' And "+Col4+" = '"+name+"' ;";
