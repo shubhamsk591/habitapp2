@@ -39,6 +39,7 @@ public class DataBaseTracker extends SQLiteOpenHelper {
         contentValues.put(Col3,name);
         Log.d("Name ","hahn: "+name);
         contentValues .put(Col4,date);
+        Log.d("Name ","hahn: "+date);
         contentValues.put(Col5,com);
         long result=db.insert(TABLE_Name,null,contentValues);
         return result != -1;
@@ -46,15 +47,16 @@ public class DataBaseTracker extends SQLiteOpenHelper {
     public boolean setCompleted(int idname,String name,String date,int com){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put(Col4,com);
+        contentValues.put(Col5,com);
         String where =Col2 +" = '"+idname+"' And "+Col3 +" = ? And "+Col4+" = ?";
         String args[]={name,date};
+        contentValues .put(Col4,date);
         long result=db.update(TABLE_Name,contentValues,where,args);
         return result!=-1;
 }
     public Cursor getdetail(int id,String name){
         SQLiteDatabase bdi2=this.getReadableDatabase();
-        String st2="SELECT * FROM "+TABLE_Name+" WHERE "+Col2+" = "+id+" And "+Col3+" = '"+name+"'";
+        String st2="SELECT "+Col4+" , "+Col5+" FROM "+TABLE_Name+" WHERE "+Col2+" = "+id+" And "+Col3+" = '"+name+"'";
         Log.d("hjckj ","uchiu"+st2);
         Cursor s2=bdi2.rawQuery(st2,null);
         Log.d("hjckj ","uchiu"+s2);
@@ -69,7 +71,7 @@ public class DataBaseTracker extends SQLiteOpenHelper {
         Cursor s2=bdi2.rawQuery(st2,null);
         int com=0;
         while(s2.moveToNext()){
-            com=s2.getInt(5);
+            com=s2.getInt(4);
         }
         return com;
 

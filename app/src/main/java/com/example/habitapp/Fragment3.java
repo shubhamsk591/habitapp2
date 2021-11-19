@@ -60,7 +60,7 @@ public class Fragment3 extends Fragment {
         while (cdata.moveToNext()) {
             arrayList.add(cdata.getString(1));
         }
-        ArrayAdapter adapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,arrayList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1,arrayList);
         listview.setAdapter(adapter);
     }
     private void Toastmessage(String st){

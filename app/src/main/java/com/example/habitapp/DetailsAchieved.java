@@ -12,14 +12,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class DetailsAchieved extends AppCompatActivity {
-    ArrayList<String> arrayList;
-    ListView listView;
+
+    ListView listView,listView1;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailsacheved);
-        listView=findViewById(R.id.listitemdatecom);
+        listView=findViewById(R.id.listitemdatea);
+        listView1=findViewById(R.id.listitemcoma);
     populate();
     }
 
@@ -28,19 +29,30 @@ public class DetailsAchieved extends AppCompatActivity {
         String name=getupdate.getStringExtra("Name");
         int id=getupdate.getIntExtra("Id",-1);
         if(id>0){
-            String message;
+
+            ArrayList<String> arrayList=new ArrayList<>();
+            ArrayList<String> arrayList1=new ArrayList<>();
             DataBaseTracker dbt=new DataBaseTracker(getApplicationContext());
             Cursor cr=dbt.getdetail(id,name);
-            Log.d("Getcount","value "+cr.getCount());
+            if(cr.getCount()>0){
+                arrayList.add("Dates");
+                arrayList1.add("Complete");
             while(cr.moveToNext()){
-                String date=cr.getString(3);
+                String date=cr.getString(0);
                 Log.d("ghh","hj"+date);
-                int com=cr.getInt(4);
-                message=date.toString()+"\t"+"'"+com+"'";
+                int com=cr.getInt(1);
                 arrayList.add(date);
+                if(com==1){
+                arrayList1.add("Yes");}
+                else{
+                    arrayList1.add("No");
+                }
             }
-            ArrayAdapter ad=new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1,arrayList);
+            ArrayAdapter<String> ad=new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,arrayList);
             listView.setAdapter(ad);
+                ArrayAdapter<String> ad1=new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,arrayList1);
+                listView1.setAdapter(ad1);
+            }
         }
     }
 }

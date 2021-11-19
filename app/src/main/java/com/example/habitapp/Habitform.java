@@ -65,9 +65,8 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                 Log.d("you","are value inserted ");
                 if (nametxt.length() != 0 && questiontxt.length() != 0 && targettxt.length() != 0) {
                     Log.d("you","are after test");
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ", Locale.US);
-                    String currentDate = sdf.format(new Date());
-                    AddData(nametxt, questiontxt, unittxt, targettxt, rm, notestxt, completed,currentDate);
+
+                    AddData(nametxt, questiontxt, unittxt, targettxt, rm, notestxt, completed);
                     Log.d("you","are add data after");
                     editname.setText("");
                     edquestion.setText("");
@@ -88,8 +87,10 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                 }
             }
 
-            public void AddData(String nametxt, String questiontxt, String unittxt, String targettxt,int rm, String notestxt,int completed,String data) {
-                boolean insert=dmhelper.addDatabaseitem(nametxt,questiontxt,unittxt,targettxt,rm,notestxt,completed,date);
+            public void AddData(String nametxt, String questiontxt, String unittxt, String targettxt,int rm, String notestxt,int completed) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ", Locale.US);
+                String currentDate = sdf.format(new Date());
+                boolean insert=dmhelper.addDatabaseitem(nametxt,questiontxt,unittxt,targettxt,rm,notestxt,completed,currentDate);
                 Log.d("you","are checking insert");
                 if(insert){
                     ToastMessage("Details filled inserted ");
@@ -97,7 +98,7 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                     cr.moveToFirst();
                     int id=cr.getInt(0);
                     DataBaseTracker dbt=new DataBaseTracker(getApplicationContext());
-                    boolean a=dbt.addDatabaseitemtracker(id,nametxt,date,0);
+                    boolean a=dbt.addDatabaseitemtracker(id,nametxt,currentDate,0);
                     if(a){
                         ToastMessage("UpdateTracker");
                     }
