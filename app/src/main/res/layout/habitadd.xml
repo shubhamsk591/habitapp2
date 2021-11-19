@@ -14,7 +14,9 @@
         android:layout_marginTop="4dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="4dp"
-        android:text="Today's Date" />
+        android:textSize="24sp"
+        android:text="@string/today_s_date"
+        android:layout_centerHorizontal="true"/>
 
     <LinearLayout
         android:id="@+id/linearlisthome1"
@@ -50,7 +52,7 @@
         android:layout_alignEnd="@id/linearlisthome1"
         android:layout_alignBottom="@id/linearlisthome1"
         android:layout_gravity="bottom"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:baselineAlignBottom="true"
         android:contentDescription="@string/add_habit"
