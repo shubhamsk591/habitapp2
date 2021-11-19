@@ -2,6 +2,7 @@ package com.example.habitapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -10,7 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Progress extends AppCompatActivity {
-    private int progress=0;
+    private int prog=0;
+    TextView tx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +21,6 @@ public class Progress extends AppCompatActivity {
         Intent up=getIntent();
         String name=up.getStringExtra("Name");
         int id=up.getIntExtra("Id",-1);
-        progress=progressvalue(id,name);
         update();
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,13 +39,18 @@ public class Progress extends AppCompatActivity {
         txt.setText(name);
         DataBaseTracker dbt=new DataBaseTracker(getApplicationContext());
         int count=dbt.getcomCount(id,name);
+        Log.d("Value","j"+count);
         int pr=dbt.getCompletecount(id,name);
-        return (int)((pr/count)*100);
+        Log.d("Value","j"+pr);
+        return (int)((pr*100)/count);
     }
 
     private void update() {
+        tx=findViewById(R.id.perctext);
+        String message=prog+"%";
+        tx.setText(message);
         ProgressBar pr=findViewById(R.id.progress_bar);
-        pr.setProgress(progress);
+        pr.setProgress(prog);
 
     }
 }

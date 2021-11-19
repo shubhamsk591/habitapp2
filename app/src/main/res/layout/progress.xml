@@ -32,6 +32,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:progress="100" />
 
+    <TextView
+        android:id="@+id/perctext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/per"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar" />
+
     <Button
         android:id="@+id/detailbutton"
         android:layout_width="wrap_content"
