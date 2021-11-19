@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Progress extends AppCompatActivity {
-    private int prog=0;
     TextView tx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +20,7 @@ public class Progress extends AppCompatActivity {
         Intent up=getIntent();
         String name=up.getStringExtra("Name");
         int id=up.getIntExtra("Id",-1);
-        update();
+        update(id,name);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,8 +44,9 @@ public class Progress extends AppCompatActivity {
         return (int)((pr*100)/count);
     }
 
-    private void update() {
+    private void update(int id,String name) {
         tx=findViewById(R.id.perctext);
+        int prog=progressvalue(id,name);
         String message=prog+"%";
         tx.setText(message);
         ProgressBar pr=findViewById(R.id.progress_bar);
