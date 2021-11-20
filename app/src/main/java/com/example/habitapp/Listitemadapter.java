@@ -76,15 +76,21 @@ public class Listitemadapter extends ArrayAdapter<String> {
                             boolean del = databasehelper.deletedata(itemid, name);
                             if (del) {
                                 Toastmessage("Sucessfully deleted ");
-                                Intent ab = new Intent(getContext(), MainActivity.class);
+                                DataBaseTracker dbt=new DataBaseTracker(getContext());
+                                boolean a=dbt.deletedataitem(itemid,name);
+                                if(a){Toastmessage("Sucessfully deleted from tracker");}
+                                else{
+                                    Toastmessage("Failed delete from tracker ");
+                                }
+                                Intent ab = new Intent(getContext(), Home.class);
                                 context.startActivity(ab);
                             }} else {
-                                Toastmessage("Failed to delete ");
-                                Intent ab = new Intent(getContext(), MainActivity.class);
-                                context.startActivity(ab);
-                            }
-                        }}
-        });
+                            Toastmessage("Failed to delete ");
+                            Intent ab = new Intent(getContext(), Home.class);
+                            context.startActivity(ab);
+                        }
+                    }}
+            });
             detail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -1,6 +1,7 @@
 package com.example.habitapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +22,7 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
     private EditText editname,edunit,edquestion,ednotes,edtarget;
     private Spinner reminder;
     private int completed=0;
-    private String remindertxt,nametxt="",questiontxt="",notestxt="",unittxt="",targettxt="",date="";
+    private String remindertxt,nametxt="",questiontxt="",notestxt="",unittxt="",targettxt="";
     private int rm=0;
 
     @Override
@@ -64,7 +65,8 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                 Log.d("you","are value inserted ");
                 if (nametxt.length() != 0 && questiontxt.length() != 0 && targettxt.length() != 0) {
                     Log.d("you","are after test");
-                    String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ", Locale.US);
+                    String date = sdf.format(new Date());
                     AddData(nametxt, questiontxt, unittxt, targettxt, rm, notestxt, completed,date);
                     Log.d("you","are add data after");
                     editname.setText("");
@@ -86,11 +88,16 @@ public class Habitform extends AppCompatActivity implements AdapterView.OnItemSe
                 }
             }
 
-            public void AddData(String nametxt, String questiontxt, String unittxt, String targettxt,int rm, String notestxt,int completed,String data) {
+            public void AddData(String nametxt, String questiontxt, String unittxt, String targettxt,int rm, String notestxt,int completed,String date) {
                 boolean insert=dmhelper.addDatabaseitem(nametxt,questiontxt,unittxt,targettxt,rm,notestxt,completed,date);
                 Log.d("you","are checking insert");
                 if(insert){
                     ToastMessage("Details filled inserted ");
+                    Cursor cr=dmhelper.getItemID(nametxt);
+                    cr.moveToFirst();
+                    int id=cr.getInt(0);
+                    DataBaseTracker dbt=new DataBaseTracker(getApplicationContext());
+                   dbt.addDatabaseitemtracker(id,nametxt,date,0);
 
                 }
                 else{

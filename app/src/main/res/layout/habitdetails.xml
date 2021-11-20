@@ -2,140 +2,187 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
-        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:layout_marginTop="32dp"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/dutext_input_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="2"
                 android:text="@string/Name"
-                android:layout_margin="16dp"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/duname_input"
-                android:hint="@string/Name_of_habit"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                />
+                android:layout_weight="9"
+                android:hint="@string/Name_of_habit" />
         </LinearLayout>
+
         <LinearLayout
-            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/dutext_input_question"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="@string/Question"/>
+                android:layout_weight="3"
+                android:text="@string/Question"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/duquestion_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:hint="@string/questionforsureaddhabit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_weight="9"
+                android:hint="@string/questionforsureaddhabit" />
         </LinearLayout>
+
         <LinearLayout
-            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/dutext_input_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Unit"
-                android:layout_margin="16dp"/>
-            <TextView
-                android:hint="@string/ExUnit"
-                android:id="@+id/duinput_unit"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                />
+                android:layout_weight="3"
+                android:text="@string/Unit"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/duinput_unit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="9"
+                android:hint="@string/ExUnit" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/linear1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/text_input_target"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Target"
-                android:layout_margin="16dp">
-
-            </TextView>
-            <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/ExTarget"
-                android:id="@+id/duinput_target"
                 android:layout_margin="16dp"
-                android:layout_weight="0.6"/>
+                android:layout_weight="3"
+                android:text="@string/Target"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/duinput_target"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="9"
+                android:hint="@string/ExTarget" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/dutext_input_reminder"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="@string/Reminder" />
+                android:layout_weight="3"
+                android:text="@string/Reminder"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/dureminder_input"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:layout_weight="9"
                 android:hint="@string/Ok" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/dutext_input_notes"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:hint="@string/Notes"
-                android:layout_weight="0.4"/>
+                android:layout_weight="3"
+                android:hint="Notes"
+                android:textStyle="bold" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/dunotes_input"
-                android:layout_weight="0.6"/>
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="9" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/dutext_input_completet"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="3"
+                android:hint="@string/Completed"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ducomplete_input"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.4"
                 android:layout_margin="16dp"
-                android:hint="@string/Completed"/>
-            <TextView
-                android:layout_margin="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.6"
-                android:id="@+id/ducomplete_input"
-                />
+                android:layout_weight="9" />
         </LinearLayout>
 
     </LinearLayout>

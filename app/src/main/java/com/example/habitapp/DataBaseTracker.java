@@ -24,7 +24,6 @@ public class DataBaseTracker extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String  createtable="CREATE TABLE "+TABLE_Name+" (Id INTEGER Primary key AutoIncrement ,"+Col2+" Integer NOT NULL ,"+Col3+" Text not null , " +Col4+ " Text not null ,"+Col5+" int not null );";
         sqLiteDatabase.execSQL(createtable);
-
     }
 
     @Override
@@ -33,7 +32,7 @@ public class DataBaseTracker extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
 
     }
-    public boolean addDatabaseitemtracker(int id,String name,String date,int com){
+    public void addDatabaseitemtracker(int id, String name, String date, int com){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(Col2,id);
@@ -42,38 +41,53 @@ public class DataBaseTracker extends SQLiteOpenHelper {
         contentValues .put(Col4,date);
         contentValues.put(Col5,com);
         long result=db.insert(TABLE_Name,null,contentValues);
-        return result != -1;
     }
     public boolean setCompleted(int idname,String name,String date,int com){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put(Col4,com);
+        contentValues.put(Col5,com);
         String where =Col2 +" = '"+idname+"' And "+Col3 +" = ? And "+Col4+" = ?";
-        String args[]={name,date};
+        String[] args ={name,date};
+        contentValues .put(Col5,com);
         long result=db.update(TABLE_Name,contentValues,where,args);
         return result!=-1;
-}
+    }
     public Cursor getdetail(int id,String name){
         SQLiteDatabase bdi2=this.getReadableDatabase();
-        String st2="SELECT * FROM "+TABLE_Name+" WHERE "+Col2+" = "+id+" And "+Col3+" = '"+name+"' ;";
+        String st2="SELECT "+Col4+" , "+Col5+" FROM "+TABLE_Name+" WHERE "+Col2+" = "+id+" And "+Col3+" = '"+name+"'";
         Log.d("hjckj ","uchiu"+st2);
         Cursor s2=bdi2.rawQuery(st2,null);
         Log.d("hjckj ","uchiu"+s2);
-        s2.close();
         return s2;
     }
-
-    public int getComplete(int id, String name, String Date)
-    {
-        SQLiteDatabase bdi2=this.getReadableDatabase();
-        String st2="SELECT * FROM "+TABLE_Name+" WHERE "+Col3+" = '"+name+"' And "+Col4+" = '"+name+"' ;";
-        Log.d("hjckj ","uchiu"+st2);
-        Cursor s2=bdi2.rawQuery(st2,null);
-        int com=0;
-        while(s2.moveToNext()){
-            com=s2.getInt(5);
-        }
-        return com;
-
+    public boolean deletedataitem(int id,String name){
+        SQLiteDatabase db=this.getWritableDatabase();
+        String where =Col1 +" = '" +id+"' And "+Col2+" = ?";
+        String[] args ={name};
+        long result=db.delete(TABLE_Name,where,args);
+        db.close();
+        return result != -1;
     }
+    public int getcomCount(int id,String name){
+        SQLiteDatabase bdi2=this.getReadableDatabase();
+        String st2="SELECT "+Col4+" , "+Col5+" FROM "+TABLE_Name+" WHERE "+Col2+" = "+id+" And "+Col3+" = '"+name+"'";
+        Cursor s2=bdi2.rawQuery(st2,null);
+        int val=s2.getCount();
+        s2.close();
+        return val;
+    }
+    public int getCompletecount(int id,String name){
+        SQLiteDatabase bdi2=this.getReadableDatabase();
+        int count=0;
+        String st2="SELECT "+Col4+" , "+Col5+" FROM "+TABLE_Name+" WHERE "+Col2+" = "+id+" And "+Col3+" = '"+name+"'";
+        Cursor s2=bdi2.rawQuery(st2,null);
+        while(s2.moveToNext()){
+            if(s2.getInt(1)==1){
+                count=count+1;
+            }
+        }
+        s2.close();
+        return count;
+    }
+
 }

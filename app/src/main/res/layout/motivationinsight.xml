@@ -1,37 +1,56 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/purple_200">
+    android:background="@color/white">
+
     <TextView
 
-            android:id="@+id/motivationi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/motivation_Insight"
-            android:padding="5dp"
-           android:textSize="24sp"
-           android:textStyle="bold"
-        android:textColor="@color/black"
-        android:background="@color/purple_500"
-            android:layout_margin="10dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/motivationi"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/white"
+        android:hint="@string/motivation_Insight"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal"
-        android:weightSum="1.0">
+        android:weightSum="1.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
         <ImageButton
             android:id="@+id/backmotivationbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:layout_margin="10dp"
             android:layout_weight="0.5"
+            android:background="@color/teal_200"
             android:contentDescription="@string/back"
-            android:padding="5dp"
-            android:layout_margin="5dp"
-            android:background="@color/purple_700"
-            android:src="@drawable/ic_baseline_arrow_back_button">
+            android:padding="10dp"
+            android:src="@drawable/ic_baseline_arrow_back_button"
+            app:tint="@color/white">
 
         </ImageButton>
 
@@ -40,14 +59,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:layout_margin="10dp"
             android:layout_weight="0.5"
-            android:layout_margin="5dp"
+            android:background="@color/teal_200"
             android:contentDescription="@string/next"
-            android:padding="5dp"
-            android:background="@color/purple_700"
-            android:src="@drawable/ic_baseline_navigate_next_button" />
+            android:padding="10dp"
+            android:rotationY="180"
+            android:src="@drawable/ic_baseline_arrow_back_button"
+            app:tint="@color/white" />
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/waves" />
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

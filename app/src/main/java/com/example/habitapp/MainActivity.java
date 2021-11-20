@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity  {
             DataBaseDateUpdate dataBaseDateUpdate=new DataBaseDateUpdate(getApplicationContext());
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd ", Locale.US);
             String currentDate = sdf.format(new Date());
-            dataBaseDateUpdate.updatedate(currentDate);
+            dataBaseDateUpdate.addDatabaseitemdate(currentDate);
+
             getLogin();
             //change the value of your sharedPreferences
             sharedPreferences.edit().putBoolean("IS_FIRST_TIME", false).apply();

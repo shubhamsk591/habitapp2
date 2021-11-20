@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,6 +17,10 @@ public class Loginform extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
+        getSupportActionBar().hide(); // hide the title bar
+
         setContentView(R.layout.loginform);
 
         EditText username=findViewById(R.id.username_input);
@@ -29,20 +34,20 @@ public class Loginform extends AppCompatActivity {
                 String user=username.getText().toString();
                 String pass=password.getText().toString();
                 if(user.isEmpty() ||pass.isEmpty()){
-                    Toastmessage("Please complete fill details");
+                    Toastmessage("Required Fields Empty!");
                 }
                 else if(Dblogin.checkusername(user)){
                     if(Dblogin.checkuserandpass(user,pass)){
-                        Toastmessage("Welcome to login :"+user);
+                        Toastmessage("Welcome "+user);
                         Intent in=new Intent(getApplicationContext(),Home.class);
                         startActivity(in);
                     }
                     else{
-                        Toastmessage("wrong password");
+                        Toastmessage("Incorrect Credentials!");
                     }
                 }
                 else{
-                    Toastmessage("Username do not exist");
+                    Toastmessage("Username Doesn't Exist!");
                     Intent in=new Intent(getApplicationContext(),Registernew.class);
                     startActivity(in);
                 }
